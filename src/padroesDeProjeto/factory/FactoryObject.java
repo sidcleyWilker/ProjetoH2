@@ -6,7 +6,7 @@ import padroesDeProjeto.modelo.Professor;
 import padroesDeProjeto.modelo.Sala;
 
 
-public abstract class FactoryObject {
+public class FactoryObject {
 	
 
 	public Modelo objectTypeModelo(String type,String id,String nome){

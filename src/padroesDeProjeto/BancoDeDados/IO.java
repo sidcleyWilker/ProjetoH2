@@ -1,4 +1,4 @@
-package padroesDeProjeto.bancoDeDados;
+package padroesDeProjeto.BancoDeDados;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

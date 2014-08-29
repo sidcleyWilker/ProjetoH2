@@ -1,33 +1,36 @@
 package padroesDeProjeto.Fachada;
 
+
 import padroesDeProjeto.Exception.H2Exception;
+import padroesDeProjeto.Proxy.ProxyProfessor;
 
 public class FachadaCliente implements FachadaIF{
 
+	private ProxyProfessor professor = new ProxyProfessor();
+	
 	@Override
 	public void addProfessor(String idProfessor, String nome)
 			throws H2Exception {
-		// TODO Auto-generated method stub
+		professor.add(idProfessor, nome);
 		
 	}
 
 	@Override
 	public void alteraProfessor(String idProfessor, String novoNome)
 			throws H2Exception {
-		// TODO Auto-generated method stub
+		professor.alterar(idProfessor, novoNome);
 		
 	}
 
 	@Override
 	public void removeProfessor(String matricula) throws H2Exception {
-		// TODO Auto-generated method stub
+		professor.remover(matricula);
 		
 	}
 
 	@Override
 	public String getProfessor(String identificador) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return professor.getToStringProfessor(identificador);
 	}
 
 	@Override

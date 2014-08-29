@@ -1,12 +1,18 @@
 package padroesDeProjeto.objetosDAO;
 
-import padroesDeProjeto.Exception.H2Exception;
+import padroesDeProjeto.Exception.ExceptionParametroInvalido;
 import padroesDeProjeto.factory.FactoryDAO;
+import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Modelo;
 
 public class FachadaDAO {
 
 	private FactoryDAO factoryDAO;
+	
+	public FachadaDAO(){
+		this.factoryDAO = new FactoryDAO();
+	
+	}
 	
 	public void addProfessor(Modelo objectTypeModelo){
 		factoryDAO.getObjectDAOModelo("professorDao").criar("professor", objectTypeModelo);	
@@ -29,29 +35,23 @@ public class FachadaDAO {
 	}
 
 	
-	public void addDisciplinaAoPeriodo(String identificadorDisciplina,
-			String nomeDisciplina, int cargaHoraria, String identificadorCurso,
-			String identificadorperiodo) {
-		
-		
+	public void addDisciplinaAoPeriodo(Diciplina diciplina) {
+		factoryDAO.getDiciplinaDao().criar(diciplina);
 	}
 
 	
-	public void alteraDisciplina(String idCurso, String sigla, String atributo,String novoValor){
-	
-		
+	public void alteraDisciplina(String keyDiciplina, String atributo,String novoValor){
+		factoryDAO.getDiciplinaDao().atualizar(keyDiciplina, atributo, novoValor);
 	}
 
 	
-	public void removeDisciplina(String idCurso, String idDisciplina){
-
-		
+	public void removeDisciplina(String key){
+		factoryDAO.getDiciplinaDao().remove(key);
 	}
 
 
-	public String getDisciplina(String idCurso, String idDisciplina){
-
-		return null;
+	public String getDisciplina(String key){
+		return factoryDAO.getDiciplinaDao().getDiciplinas().get(key).toString();
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class FachadaDAO {
 	}
 
 	
-	public void removeCurso(String identificador) throws H2Exception {
+	public void removeCurso(String identificador){
 		factoryDAO.getObjectDAOModelo("cursoDao").remover("curso", identificador);
 		
 	}
