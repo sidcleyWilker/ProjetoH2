@@ -1,4 +1,4 @@
-package padoresDeProjeto.CommandSala;
+package padroesDeProjeto.CommandSala;
 
 import padroesDeProjeto.modelo.Sala;
 import padroesDeProjeto.util.Command;
