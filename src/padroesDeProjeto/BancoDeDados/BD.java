@@ -8,6 +8,7 @@ import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Periodo;
 import padroesDeProjeto.modelo.Professor;
 import padroesDeProjeto.modelo.Sala;
+import padroesDeProjeto.modelo.Turma;
 
 /**
  * class bd vai representar um o esquema de um banco de dados, ele é que vai conter todos os dados 
@@ -26,6 +27,7 @@ public class BD {
 	private Map<String,Sala> salas = new HashMap<>();
 	private Map<String,Diciplina> diciplinas = new HashMap<>();
 	private Map<String,Periodo> periodos = new HashMap<>();
+	private Map<String,Turma> turmas = new HashMap<>();
 	
 	public Map<String, Professor> getProfessores() {
 		return professores;
@@ -69,6 +71,14 @@ public class BD {
 		this.periodos = periodos;
 	}
 
+	public Map<String, Turma> getTurmas() {
+		return turmas;
+	}
+
+	public void setTurmas(Map<String, Turma> turmas) {
+		this.turmas = turmas;
+	}
+
 	/**
 	 * metodo que salva a class BD em um arquivo xml
 	 */
@@ -86,5 +96,6 @@ public class BD {
 		this.salas = bd.getSalas();
 		this.diciplinas = bd.getDiciplinas();
 		this.periodos = bd.getPeriodos();
+		this.turmas = bd.getTurmas();
 	}
 }
