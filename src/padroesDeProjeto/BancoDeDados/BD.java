@@ -5,6 +5,7 @@ import java.util.Map;
 
 import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
+import padroesDeProjeto.modelo.Periodo;
 import padroesDeProjeto.modelo.Professor;
 import padroesDeProjeto.modelo.Sala;
 
@@ -24,6 +25,7 @@ public class BD {
 	private Map<String,Curso> cursos = new HashMap<>();
 	private Map<String,Sala> salas = new HashMap<>();
 	private Map<String,Diciplina> diciplinas = new HashMap<>();
+	private Map<String,Periodo> periodos = new HashMap<>();
 	
 	public Map<String, Professor> getProfessores() {
 		return professores;
@@ -58,6 +60,14 @@ public class BD {
 	public void setDiciplinas(Map<String, Diciplina> diciplinas) {
 		this.diciplinas = diciplinas;
 	}
+	
+	public Map<String, Periodo> getPeriodos() {
+		return periodos;
+	}
+
+	public void setPeriodos(Map<String, Periodo> periodos) {
+		this.periodos = periodos;
+	}
 
 	/**
 	 * metodo que salva a class BD em um arquivo xml
@@ -75,5 +85,6 @@ public class BD {
 		this.cursos = bd.getCursos();
 		this.salas = bd.getSalas();
 		this.diciplinas = bd.getDiciplinas();
+		this.periodos = bd.getPeriodos();
 	}
 }

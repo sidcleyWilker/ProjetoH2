@@ -1,9 +1,9 @@
 package padroesDeProjeto.objetosDAO;
 
-import padroesDeProjeto.Exception.ExceptionParametroInvalido;
 import padroesDeProjeto.factory.FactoryDAO;
 import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Modelo;
+import padroesDeProjeto.modelo.Periodo;
 
 public class FachadaDAO {
 
@@ -78,17 +78,19 @@ public class FachadaDAO {
 	}
 
 	
-	public void addPeriodo(String identificadorPeriodo, String idCurso) {
-
-		
+	public void addPeriodo(Periodo periodo) {
+		factoryDAO.getPeriodoDao().cria(periodo);
 	}
 
 	
-	public void removePeriodo(String idCurso, String nomePeriodo){
-
-		
+	public void removePeriodo(String key){
+		factoryDAO.getPeriodoDao().remove(key);
 	}
 
+	public String getPeriodo(String key) {
+		return factoryDAO.getPeriodoDao().getPeriodos().get(key).toString();
+	}
+	
 	
 	public void addTurma(String idTurma, String idCurso,
 			String identificadorProfessor, String identificadorDisciplina,
@@ -136,12 +138,6 @@ public class FachadaDAO {
 		return ((CursoDAO)factoryDAO.getObjectDAOModelo("cursoDao")).getCuros().get(idCurso).toString();
 	}
 
-
-	public String getPeriodo(String idPeriodo, String idCurso) {
-
-		return null;
-	}
-
 	public String alocaTurmaAoHorario(String idTurma, String diaDaSemana,
 			int horaInicio, int horafim){
 		
@@ -159,12 +155,10 @@ public class FachadaDAO {
 	
 		return null;
 	}
-
 	
 	public String getTurmas(String diaDaSemana, int horaInicio, int horaFim){
 
 		return null;
 	}
-
 
 }

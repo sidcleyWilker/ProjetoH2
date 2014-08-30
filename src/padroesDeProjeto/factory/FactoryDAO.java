@@ -4,6 +4,7 @@ package padroesDeProjeto.factory;
 import padroesDeProjeto.objetosDAO.CursoDAO;
 import padroesDeProjeto.objetosDAO.DiciplinaDAO;
 import padroesDeProjeto.objetosDAO.ModeloDAO;
+import padroesDeProjeto.objetosDAO.PeriodoDAO;
 import padroesDeProjeto.objetosDAO.ProfessorDAO;
 import padroesDeProjeto.objetosDAO.SalaDAO;
 /**
@@ -34,4 +35,8 @@ public class FactoryDAO {
 		return new DiciplinaDAO();
 	}
 	
+	
+	public PeriodoDAO getPeriodoDao(){
+		return new PeriodoDAO();
+	}
 }
