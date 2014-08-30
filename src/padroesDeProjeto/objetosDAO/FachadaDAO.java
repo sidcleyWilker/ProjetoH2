@@ -4,6 +4,7 @@ import padroesDeProjeto.factory.FactoryDAO;
 import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Modelo;
 import padroesDeProjeto.modelo.Periodo;
+import padroesDeProjeto.modelo.Turma;
 
 public class FachadaDAO {
 
@@ -92,28 +93,23 @@ public class FachadaDAO {
 	}
 	
 	
-	public void addTurma(String idTurma, String idCurso,
-			String identificadorProfessor, String identificadorDisciplina,
-			String identificadorSala, String identificadorPeriodo){
-
+	public void addTurma(Turma turma){
+		factoryDAO.getTurmaDao().criar(turma);
 		
 	}
 
 	
-	public void alteraTurma(String idTurma, String campo, String novoValor){
-
-		
+	public void alteraTurma(String idTurma, String campo, Object novoValor){
+		factoryDAO.getTurmaDao().alterar(idTurma, campo, novoValor);
 	}
 
 	
 	public void removerTurma(String idTurma) {
-	
-		
+		factoryDAO.getTurmaDao().remove(idTurma);
 	}
 
 	public String getTurma(String idTurma){
-
-		return null;
+		return factoryDAO.getTurmaDao().getTurmas().get(idTurma).toString();
 	}
 
 	

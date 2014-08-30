@@ -1,26 +1,26 @@
-package padoresDeProjeto.CommandPeriodo;
+package padroesDeProjeto.CommandPeriodo;
 
 import padroesDeProjeto.modelo.Periodo;
 import padroesDeProjeto.util.Command;
 import padroesDeProjeto.util.Util;
 
-public class CommandRemovePeriodo implements Command{
+public class CommandAddPeriodo implements Command{
 
 	private Periodo periodo;
 	
-	public CommandRemovePeriodo() {
+	public CommandAddPeriodo() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
-	public void setPeriodo(Periodo periodo) {
+	public void setPerioodo(Periodo periodo) {
 		this.periodo = periodo;
 	}
 
 
 	@Override
 	public void execut() {
-		Util.fachadaDao.removePeriodo(periodo.getId());
+		Util.fachadaDao.addPeriodo(periodo);
 		
 	}
 

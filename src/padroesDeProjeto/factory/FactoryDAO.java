@@ -7,6 +7,7 @@ import padroesDeProjeto.objetosDAO.ModeloDAO;
 import padroesDeProjeto.objetosDAO.PeriodoDAO;
 import padroesDeProjeto.objetosDAO.ProfessorDAO;
 import padroesDeProjeto.objetosDAO.SalaDAO;
+import padroesDeProjeto.objetosDAO.TurmaDAO;
 /**
  * class que cria e retorna os objetos DAO 
  * @author Sidcley
@@ -38,5 +39,9 @@ public class FactoryDAO {
 	
 	public PeriodoDAO getPeriodoDao(){
 		return new PeriodoDAO();
+	}
+	
+	public TurmaDAO getTurmaDao(){
+		return new TurmaDAO();
 	}
 }
