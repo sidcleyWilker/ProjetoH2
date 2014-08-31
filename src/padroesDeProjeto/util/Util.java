@@ -17,16 +17,19 @@ public class Util {
 	public static final FactoryObject factoryObject = new FactoryObject();
 	
 	/**
-	 * verifica se atributo e vazio ou nullo
-	 * @param atributo  - atributo a ser verificado
+	 * verifica se atributo e vazio ou nullo, recebe um array de atributos indefinido
+	 * pode conter um N atributos
+	 * @param atributo  - array de atributos 
 	 * @throws ExceptionParametroInvalido - atributo invalido
 	 */
-	public static void verificaAtributo(String atributo) throws ExceptionParametroInvalido{
-		if ( atributo == null){
-			throw new ExceptionParametroInvalido("Atributo inválido");
-		}
-		if( !(atributo.matches("[a-zA-Zà-úÀ-Ú\\s .,!?:;_0-9]+"))){
-			throw new ExceptionParametroInvalido("Atributo inválido");
+	public static void verificaAtributo(String ... atributo ) throws ExceptionParametroInvalido{
+		for (String string : atributo) {
+			if ( string == null){
+				throw new ExceptionParametroInvalido();
+			}
+			if( !(string.matches("[a-zA-Zà-úÀ-Ú\\s .,!?:;_0-9]+"))){
+				throw new ExceptionParametroInvalido();
+			}
 		}
 	}
 	
@@ -35,7 +38,7 @@ public class Util {
 			@SuppressWarnings("unused")
 			int novoValor = Integer.parseInt(valor);
 		}catch( NumberFormatException e){
-			throw new ExceptionParametroInvalido("Atributo invalido");
+			throw new ExceptionParametroInvalido();
 		}
 		return true;
 	}

@@ -3,14 +3,13 @@ package padroesDeProjeto.Proxy;
 import padroesDeProjeto.CommandProfessor.CommandAddProfessor;
 import padroesDeProjeto.CommandProfessor.CommandAlteraProfessor;
 import padroesDeProjeto.CommandProfessor.CommandRemoveProfessor;
-import padroesDeProjeto.Exception.ExceptionParametroInvalido;
 import padroesDeProjeto.Exception.ExceptionProfessorJaCadastrado;
 import padroesDeProjeto.Exception.ExceptionProfessorNaoCadastrado;
 import padroesDeProjeto.Exception.H2Exception;
 import padroesDeProjeto.modelo.Professor;
-import padroesDeProjeto.objetosDAO.ProfessorDAO;
 import padroesDeProjeto.util.Comtroler;
 import padroesDeProjeto.util.Util;
+import padroesDeProjeto.util.VerificadorDeObjetos;
 
 public class ProxyProfessor {
 	
@@ -18,12 +17,14 @@ public class ProxyProfessor {
 	private CommandAlteraProfessor commandAlteraProfessor;
 	private CommandRemoveProfessor commandRemoveProfessor;
 	private Comtroler controler;
+	private VerificadorDeObjetos verificador;
 
 	public ProxyProfessor() {
 		this.commandAddProfessor = new CommandAddProfessor();
 		this.commandAlteraProfessor = new CommandAlteraProfessor();
 		this.commandRemoveProfessor = new CommandRemoveProfessor();
 		this.controler = new Comtroler();
+		this.verificador = new VerificadorDeObjetos();
 	}
 	/**
 	 * verifica se os atributos foram pasados coretamentes e se o professor ainda não esta cadastrado no 
@@ -36,9 +37,8 @@ public class ProxyProfessor {
 	 * 						parametros invalidos || professor já cadastrado
 	 */
 	public void add(String id, String nome) throws H2Exception{
-		Util.verificaAtributo(id);
-		Util.verificaAtributo(nome);
-		if(verificaCadastro(id)){
+		Util.verificaAtributo(id,nome);
+		if(verificador.contemProfessor(id)){
 			throw new ExceptionProfessorJaCadastrado("Professor Já Cadastrado");
 		}else{
 			commandAddProfessor.setProfessor((Professor)Util.factoryObject.objectTypeModelo("professor", id, nome));
@@ -58,10 +58,9 @@ public class ProxyProfessor {
 	 * 					parametros invalidos || professor não cadastrado
 	 */
 	public void alterar(String idProfessor, String novoNome)throws H2Exception{
-		Util.verificaAtributo(idProfessor);
-		Util.verificaAtributo(novoNome);
-		if(verificaCadastro(idProfessor)){
-			commandAlteraProfessor.setProfessor(getProfessor(idProfessor));
+		Util.verificaAtributo(idProfessor,novoNome);
+		if(verificador.contemProfessor(idProfessor)){
+			commandAlteraProfessor.setProfessor(Util.bd.getProfessores().get(idProfessor));
 			commandAlteraProfessor.setNovoNome(novoNome);
 			controler.setCommand(commandAlteraProfessor);
 			controler.executarCommando();
@@ -81,37 +80,13 @@ public class ProxyProfessor {
 	 */
 	public void remover(String id) throws H2Exception{
 		Util.verificaAtributo(id);
-		if(verificaCadastro(id)){
-			commandRemoveProfessor.setProfessor(getProfessor(id));
+		if(verificador.contemProfessor(id)){
+			commandRemoveProfessor.setProfessor(Util.bd.getProfessores().get(id));
 			controler.setCommand(commandRemoveProfessor);
 			controler.executarCommando();
 		}else{
 			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
 		}
-	}
-	
-	/**
-	 * verifica se existe um professor já cadastrado no sistema com o id pasado
-	 * @param id - identificador do professor
-	 * @return - true caso existe e false caso contrario
-	 */
-	private boolean verificaCadastro(String id){
-		if(((ProfessorDAO)Util.factoryDao.getObjectDAOModelo("professorDao")).getProfessores().containsKey(id)){
-			return true;
-		}
-		return false;
-	}
-	
-	/**
-	 * verifica cadastro se um profesor esta cadastrado para poder retornalo
-	 * @param id - identificador do professor
-	 * @return - um professor ou null
-	 */
-	private Professor getProfessor(String id){
-		if(verificaCadastro(id)){
-			return ((ProfessorDAO) Util.factoryDao.getObjectDAOModelo("professorDao")).getProfessores().get(id);
-		}
-		return null;
 	}
 	
 	/**
@@ -123,8 +98,8 @@ public class ProxyProfessor {
 	 */
 	public String getToStringProfessor(String id) throws H2Exception{
 		Util.verificaAtributo(id);
-		if(verificaCadastro(id)){
-			return getProfessor(id).toString();
+		if(verificador.contemProfessor(id)){
+			return Util.bd.getProfessores().get(id).toString();
 		}else{
 			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
 		}
