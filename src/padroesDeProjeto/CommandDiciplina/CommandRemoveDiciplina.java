@@ -4,7 +4,11 @@ import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.util.Command;
 import padroesDeProjeto.util.Util;
 
-
+/**
+ * class que executa o commando de remover uma diciplina do sistema
+ * @author Sidcley
+ *
+ */
 public class CommandRemoveDiciplina implements Command{
 
 	
@@ -21,7 +25,9 @@ public class CommandRemoveDiciplina implements Command{
 	}
 
 
-
+	/**
+	 * delega a class fachadaDao a responsabilidade de remover uma diciplina atravez do seu id
+	 */
 	@Override
 	public void execut() {
 		Util.fachadaDao.removeDisciplina(diciplina.getId());

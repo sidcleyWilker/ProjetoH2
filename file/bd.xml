@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.7.0_67" class="java.beans.XMLDecoder">
+ <object class="padroesDeProjeto.BancoDeDados.BD">
+  <void property="professores">
+   <void method="put">
+    <string>123</string>
+    <object class="padroesDeProjeto.modelo.Professor">
+     <void property="id">
+      <string>123</string>
+     </void>
+     <void property="nome">
+      <string>sasuke</string>
+     </void>
+    </object>
+   </void>
+  </void>
+ </object>
+</java>

@@ -16,31 +16,47 @@ import padroesDeProjeto.objetosDAO.TurmaDAO;
 public class FactoryDAO {
 
 	/**
-	 * factory metodo verifica o typo de objeto a ser criado e retorna um aparte do tipo passado 
-	 * @param type - tipo do objecto a ser criado
-	 * @return - um objeto do tipo modeloDAO
+	 * cria e retorna um objeto do tipo ProfessorDAO
+	 * @return
 	 */
-	public ModeloDAO getObjectDAOModelo(String type){
-		if(type.equals("professorDao")){
-			return new ProfessorDAO();
-		}else if (type.equals("cursoDao")){
-			return new CursoDAO();
-		}else if(type.equals("salaDao")){
-			return new SalaDAO();
-		}
-		return null;
-	} 
-
+	public ProfessorDAO getProfessorDao(){
+		return new ProfessorDAO();
+	}
+	/**
+	 * cria e retorna um objeto do tipo CursoDao
+	 * @return
+	 */
+	public CursoDAO getCursoDao(){
+		return new CursoDAO();
+	}
+	/**
+	 * cria e retorna um objeto do tipo SalaDao
+	 * @return
+	 */
+	public SalaDAO getSalaDao(){
+		return new SalaDAO();
+	}
 	
+	/**
+	 * cria e retorna um objeto do tipo DiciplinaDao
+	 * @return
+	 */
 	public DiciplinaDAO getDiciplinaDao(){
 		return new DiciplinaDAO();
 	}
 	
-	
+	/**
+	 * cria e retorna um objeto do tipo PeriodoDao
+	 * @return
+	 */
 	public PeriodoDAO getPeriodoDao(){
 		return new PeriodoDAO();
 	}
 	
+	/**
+	 * cria e retorna um objeto do tipo TurmaDao
+	 * @return
+	 */
 	public TurmaDAO getTurmaDao(){
 		return new TurmaDAO();
 	}

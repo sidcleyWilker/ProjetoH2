@@ -41,7 +41,7 @@ public class ProxyProfessor {
 		if(verificador.contemProfessor(id)){
 			throw new ExceptionProfessorJaCadastrado("Professor Já Cadastrado");
 		}else{
-			commandAddProfessor.setProfessor((Professor)Util.factoryObject.objectTypeModelo("professor", id, nome));
+			commandAddProfessor.setProfessor((Professor) Util.factoryObject.objectTypeModelo("professor", id, nome));
 			controler.setCommand(commandAddProfessor);
 			controler.executarCommando();
 		}
@@ -99,7 +99,7 @@ public class ProxyProfessor {
 	public String getToStringProfessor(String id) throws H2Exception{
 		Util.verificaAtributo(id);
 		if(verificador.contemProfessor(id)){
-			return Util.bd.getProfessores().get(id).toString();
+			return Util.factoryDao.getProfessorDao().getProfessores().get(id).toString();
 		}else{
 			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
 		}

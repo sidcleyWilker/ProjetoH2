@@ -6,9 +6,13 @@ public class Sala extends Modelo{
 		super(id, nome);
 	}
 
+	public Sala(){
+		
+	}
+	
 	@Override
 	public String toString() {
-		return id+" - "+nome;
+		return getId()+" - "+getNome();
 	}
 
 }

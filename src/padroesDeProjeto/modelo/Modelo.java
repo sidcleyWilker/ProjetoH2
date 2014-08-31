@@ -2,12 +2,16 @@ package padroesDeProjeto.modelo;
 
 public abstract class Modelo {
 	
-	protected String id;
-	protected String nome;
+	private String id;
+	private String nome;
 	
 	public Modelo(String id, String nome){
 		this.id = id;
 		this.nome = nome;
+	}
+	
+	public Modelo(){
+		
 	}
 
 	public String getId() {

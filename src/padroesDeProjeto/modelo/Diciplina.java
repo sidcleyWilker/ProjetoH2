@@ -13,6 +13,9 @@ public class Diciplina extends Modelo{
 		this.periodo = periodo;
 	}
 
+	public Diciplina(){
+		
+	}
 	
 	public int getCargaHoraria() {
 		return cargaHoraria;
@@ -46,7 +49,7 @@ public class Diciplina extends Modelo{
 
 	@Override
 	public String toString() {
-		return curso.getId()+" - "+nome;
+		return curso.getId()+" - "+getNome();
 	}
 
 }

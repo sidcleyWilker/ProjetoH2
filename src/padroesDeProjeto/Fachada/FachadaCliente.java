@@ -2,30 +2,29 @@ package padroesDeProjeto.Fachada;
 
 
 import padroesDeProjeto.Exception.H2Exception;
+import padroesDeProjeto.Proxy.ProxyDiciplina;
 import padroesDeProjeto.Proxy.ProxyProfessor;
 
 public class FachadaCliente implements FachadaIF{
 
 	private ProxyProfessor professor = new ProxyProfessor();
+	private ProxyDiciplina diciplina = new ProxyDiciplina();
 	
 	@Override
 	public void addProfessor(String idProfessor, String nome)
 			throws H2Exception {
-		professor.add(idProfessor, nome);
-		
+		professor.add(idProfessor, nome);	
 	}
 
 	@Override
 	public void alteraProfessor(String idProfessor, String novoNome)
 			throws H2Exception {
-		professor.alterar(idProfessor, novoNome);
-		
+		professor.alterar(idProfessor, novoNome);	
 	}
 
 	@Override
 	public void removeProfessor(String matricula) throws H2Exception {
 		professor.remover(matricula);
-		
 	}
 
 	@Override
@@ -37,29 +36,28 @@ public class FachadaCliente implements FachadaIF{
 	public void addDisciplinaAoPeriodo(String identificadorDisciplina,
 			String nomeDisciplina, int cargaHoraria, String identificadorCurso,
 			String identificadorperiodo) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		diciplina.addDiciplina(identificadorDisciplina, nomeDisciplina, cargaHoraria, identificadorCurso, identificadorperiodo);	
 	}
 
 	@Override
 	public void alteraDisciplina(String idCurso, String sigla, String atributo,
 			String novoValor) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		diciplina.alteraDiciplina(idCurso, sigla, atributo, novoValor);
 	}
 
 	@Override
 	public void removeDisciplina(String idCurso, String idDisciplina)
 			throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		diciplina.removeDiciplina(idCurso, idDisciplina);
 	}
 
 	@Override
 	public String getDisciplina(String idCurso, String idDisciplina)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return diciplina.toStringDiciplina(idCurso, idDisciplina);
 	}
 
 	@Override

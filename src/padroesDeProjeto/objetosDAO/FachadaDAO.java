@@ -1,9 +1,11 @@
 package padroesDeProjeto.objetosDAO;
 
 import padroesDeProjeto.factory.FactoryDAO;
+import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
-import padroesDeProjeto.modelo.Modelo;
 import padroesDeProjeto.modelo.Periodo;
+import padroesDeProjeto.modelo.Professor;
+import padroesDeProjeto.modelo.Sala;
 import padroesDeProjeto.modelo.Turma;
 
 public class FachadaDAO {
@@ -15,24 +17,24 @@ public class FachadaDAO {
 	
 	}
 	
-	public void addProfessor(Modelo objectTypeModelo){
-		factoryDAO.getObjectDAOModelo("professorDao").criar("professor", objectTypeModelo);	
+	public void addProfessor(Professor professor){
+		factoryDAO.getProfessorDao().criar("professor", professor);
 	}
 
 
 	public void alteraProfessor(String idProfessor, String novoNome){
-		factoryDAO.getObjectDAOModelo("professorDao").atualizar("professor", idProfessor, novoNome);	
+		factoryDAO.getProfessorDao().atualizar("professor", idProfessor, novoNome);	
 	}
 
 	
 	public void removeProfessor(String matricula){
-		factoryDAO.getObjectDAOModelo("professorDao").remover("professor", matricula);
+		factoryDAO.getProfessorDao().remover("professor", matricula);
 		
 	}
 
 	
 	public String getProfessor(String identificador) {
-		return ((ProfessorDAO) factoryDAO.getObjectDAOModelo("professorDao")).getProfessores().get(identificador).toString();
+		return factoryDAO.getProfessorDao().getProfessores().get(identificador).toString();
 	}
 
 	
@@ -59,23 +61,23 @@ public class FachadaDAO {
 	 * 
 	 * @param objectTypeModelo
 	 */
-	public void addSala(Modelo objectTypeModelo){
-		factoryDAO.getObjectDAOModelo("salaDao").criar("sala", objectTypeModelo);
+	public void addSala(Sala sala){
+		factoryDAO.getSalaDao().criar("sala", sala);
 	}
 
 
 	public void alteraSala(String idSala, String novoBloco) {
-		factoryDAO.getObjectDAOModelo("salaDao").atualizar("sala", idSala, novoBloco);	
+		factoryDAO.getSalaDao().atualizar("sala", idSala, novoBloco);	
 	}
 
 
 	public void removeSala(String idSala) {
-		factoryDAO.getObjectDAOModelo("salaDao").remover("sala", idSala);
+		factoryDAO.getSalaDao().remover("sala", idSala);
 	}
 	
 	
 	public String getSala(String idSala){
-		return ((SalaDAO) factoryDAO.getObjectDAOModelo("salaDao")).getSalas().get(idSala).toString();
+		return factoryDAO.getSalaDao().getSalas().get(idSala).toString();
 	}
 
 	
@@ -113,25 +115,25 @@ public class FachadaDAO {
 	}
 
 	
-	public void addCurso(Modelo objectTypeModelo){
-		factoryDAO.getObjectDAOModelo("cursoDao").criar("sala", objectTypeModelo);
+	public void addCurso(Curso curso){
+		factoryDAO.getCursoDao().criar("sala", curso);
 		
 	}
 
 	
 	public void alterarCurso(String identificador, String novoValor){
-		factoryDAO.getObjectDAOModelo("cursoDao").atualizar("curso", identificador, novoValor);
+		factoryDAO.getCursoDao().atualizar("curso", identificador, novoValor);
 	}
 
 	
 	public void removeCurso(String identificador){
-		factoryDAO.getObjectDAOModelo("cursoDao").remover("curso", identificador);
+		factoryDAO.getCursoDao().remover("curso", identificador);
 		
 	}
 
 
 	public String getCurso(String idCurso){
-		return ((CursoDAO)factoryDAO.getObjectDAOModelo("cursoDao")).getCuros().get(idCurso).toString();
+		return factoryDAO.getCursoDao().getCuros().get(idCurso).toString();
 	}
 
 	public String alocaTurmaAoHorario(String idTurma, String diaDaSemana,

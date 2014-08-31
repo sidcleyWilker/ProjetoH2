@@ -3,7 +3,11 @@ package padroesDeProjeto.CommandDiciplina;
 import padroesDeProjeto.util.Command;
 import padroesDeProjeto.util.Util;
 
-
+/**
+ * class que executa a responsabilidade de alterar o valor do atributo de uma diciplina
+ * @author Sidcley
+ *
+ */
 public class CommandAlteraDiciplina implements Command{
 
 	private String keyDiciplina;
@@ -32,7 +36,10 @@ public class CommandAlteraDiciplina implements Command{
 	}
 
 
-
+	/**
+	 * delega a class fachadaDao a responsabilidade de fazer a alteração parando a chave da diciplina,
+	 * o atributo e o novo valor
+	 */
 	@Override
 	public void execut(){
 		Util.fachadaDao.alteraDisciplina(keyDiciplina, atributo, novoValor);

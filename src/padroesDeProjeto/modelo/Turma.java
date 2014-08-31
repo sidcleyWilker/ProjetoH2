@@ -18,6 +18,11 @@ public class Turma {
 		this.sala = sala;
 		this.periodo = periodo;
 	}
+	
+	public Turma(){
+		
+	}
+	
 	public String getId() {
 		return id;
 	}

@@ -7,7 +7,6 @@ import padroesDeProjeto.util.Util;
 
 
 public class ProfessorDAO extends ModeloDAO{
-
 	
 	public Map<String,Professor> getProfessores(){
 		Util.bd.load();

@@ -9,6 +9,10 @@ public class Periodo {
 		this.id = id;
 		this.curso = curso;
 	}
+	
+	public Periodo(){
+		
+	}
 
 	public String getId() {
 		return id;
