@@ -9,7 +9,33 @@
       <string>ADS</string>
      </void>
      <void property="nome">
-      <string>Análise e Desenvolvimento de Sistemas</string>
+      <string>Analise e de...</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="diciplinas">
+   <void method="put">
+    <string>id</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>100</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Analise e de...</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>id</string>
+     </void>
+     <void property="nome">
+      <string>bd1</string>
      </void>
     </object>
    </void>
@@ -24,7 +50,7 @@
         <string>ADS</string>
        </void>
        <void property="nome">
-        <string>Análise e Desenvolvimento de Sistemas</string>
+        <string>Analise e de...</string>
        </void>
       </object>
      </void>
