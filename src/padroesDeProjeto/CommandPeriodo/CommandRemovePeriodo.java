@@ -26,7 +26,7 @@ public class CommandRemovePeriodo implements Command{
 	 */
 	@Override
 	public void execut() {
-		Util.fachadaDao.removePeriodo(periodo.getId());
+		Util.fachadaDao.removePeriodo(periodo.getId()+"-"+periodo.getCurso().getId());
 		
 	}
 

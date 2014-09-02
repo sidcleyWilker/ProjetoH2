@@ -116,7 +116,7 @@ public class FachadaDAO {
 
 	
 	public void addCurso(Curso curso){
-		factoryDAO.getCursoDao().criar("sala", curso);
+		factoryDAO.getCursoDao().criar("curso", curso);
 		
 	}
 

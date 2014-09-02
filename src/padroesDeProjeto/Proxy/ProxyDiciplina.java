@@ -52,7 +52,7 @@ public class ProxyDiciplina {
 			throws H2Exception {
 		Util.verificaAtributo(idDisciplina, nomeDisciplina, idCurso, idPeriodo);
 		if (!verificador.comtemDiciplina(idDisciplina)) {
-			if (verificador.comtemCurso(idCurso)&& verificador.comtemPeriodo(idPeriodo)) {
+			if (contemCursoPeriodo(idCurso,idPeriodo)) {
 				commandAddDciciplina.setDicipina(Util.factoryObject.criarDiciplina(idDisciplina, nomeDisciplina,cargaHoraria, idCurso, idPeriodo));
 				controle.setCommand(commandAddDciciplina);
 				controle.executarCommando();
@@ -88,11 +88,16 @@ public class ProxyDiciplina {
 			// PEGAR A DICIPLINA QUE CONTEM UM CURSO E VERIFICAR SE O CURSO
 			// PASSASO É IGUAL OU CURSO DA DICIPLINA
 			if (Util.bd.getDiciplinas().get(sigla).getCurso().equals(Util.bd.getCursos().get(idCurso))) {
-				commandAlteraDiciplina.setKeyDiciplina(sigla);
-				commandAlteraDiciplina.setAtributo(atributo);
-				commandAlteraDiciplina.setNovoValor(novoValor);
-				controle.setCommand(commandAlteraDiciplina);
-				controle.executarCommando();
+				if(!atributo.equals("cargaHoraria") && !atributo.equals("nome")){
+					commandAlteraDiciplina.setKeyDiciplina(sigla);
+					commandAlteraDiciplina.setAtributo(atributo);
+					commandAlteraDiciplina.setNovoValor(novoValor);
+					controle.setCommand(commandAlteraDiciplina);
+					controle.executarCommando();
+				}else{
+					throw new ExceptionParametroInvalido();
+				}
+				
 			} else {
 				// a diciplina não é desse curso
 				throw new ExceptionParametroInvalido();
@@ -128,14 +133,22 @@ public class ProxyDiciplina {
 	}
 
 	public String toStringDiciplina(String idCurso, String idDisciplina) throws H2Exception{
+		Util.verificaAtributo(idCurso,idDisciplina);
 		if(verificador.comtemCurso(idCurso) && verificador.comtemDiciplina(idDisciplina)){
 			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().equals(Util.bd.getCursos().get(idCurso))) {
-				return Util.bd.getDiciplinas().get(idDisciplina).toString();
+				return Util.fachadaDao.getDisciplina(idDisciplina);
 			}else{
 				throw new ExceptionParametroInvalido();
 			}
 		}else{
 			throw new ExceptionDiciplinaNaoCadastrada();
 		}
+	}
+	
+	private boolean contemCursoPeriodo(String idCurso, String idPeriodo){
+		if(verificador.comtemCurso(idCurso) && verificador.comtemPeriodo(idPeriodo+"-"+idCurso)){
+			return true;
+		}
+		return false;
 	}
 }

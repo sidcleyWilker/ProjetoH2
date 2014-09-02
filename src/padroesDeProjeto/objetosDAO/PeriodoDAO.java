@@ -9,7 +9,7 @@ public class PeriodoDAO {
 
 	public void cria(Periodo periodo){
 		Util.bd.load();
-		Util.bd.getPeriodos().put(periodo.getId(), periodo);
+		Util.bd.getPeriodos().put(periodo.getId()+"-"+periodo.getCurso().getId(), periodo);
 		Util.bd.salvar();
 	}
 	

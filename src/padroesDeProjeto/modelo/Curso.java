@@ -12,7 +12,7 @@ public class Curso extends Modelo{
 
 	@Override
 	public String toString() {
-		return getId()+" - "+getNome();
+		return getNome()+" - "+getId();
 	}
 
 }

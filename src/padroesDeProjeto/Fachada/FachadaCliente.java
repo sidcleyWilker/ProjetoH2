@@ -2,13 +2,21 @@ package padroesDeProjeto.Fachada;
 
 
 import padroesDeProjeto.Exception.H2Exception;
+import padroesDeProjeto.Proxy.ProxyCurso;
 import padroesDeProjeto.Proxy.ProxyDiciplina;
+import padroesDeProjeto.Proxy.ProxyPeriodo;
 import padroesDeProjeto.Proxy.ProxyProfessor;
+import padroesDeProjeto.Proxy.ProxySala;
+import padroesDeProjeto.Proxy.ProxyTurma;
 
 public class FachadaCliente implements FachadaIF{
 
 	private ProxyProfessor professor = new ProxyProfessor();
 	private ProxyDiciplina diciplina = new ProxyDiciplina();
+	private ProxySala sala = new ProxySala();
+	private ProxyCurso curso = new ProxyCurso();
+	private ProxyPeriodo periodo = new ProxyPeriodo();
+	private ProxyTurma turma = new ProxyTurma();
 	
 	@Override
 	public void addProfessor(String idProfessor, String nome)
@@ -62,33 +70,39 @@ public class FachadaCliente implements FachadaIF{
 
 	@Override
 	public void addSala(String idSala, String bloco) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		sala.add(idSala, bloco);
 	}
 
 	@Override
 	public void alteraSala(String idSala, String novoBloco) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		sala.altera(idSala, novoBloco);
 	}
 
 	@Override
 	public void removeSala(String idSala) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		sala.remove(idSala);
+	}
+	
+	@Override
+	public String getSala(String idSala) throws H2Exception {
+
+		return sala.getSala(idSala);
 	}
 
 	@Override
 	public void addPeriodo(String identificadorPeriodo, String idCurso)
 			throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		periodo.add(identificadorPeriodo, idCurso);
 	}
 
 	@Override
-	public void removePeriodo(String idCurso, String nomePeriodo)
+	public void removePeriodo(String nomePeriodo,String idCurso)
 			throws H2Exception {
-		// TODO Auto-generated method stub
+		periodo.remove(nomePeriodo, idCurso);
 		
 	}
 
@@ -97,66 +111,60 @@ public class FachadaCliente implements FachadaIF{
 			String identificadorProfessor, String identificadorDisciplina,
 			String identificadorSala, String identificadorPeriodo)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-		
+	
+		turma.addTurma(idTurma, idCurso, identificadorProfessor, identificadorDisciplina, identificadorSala, identificadorPeriodo);
 	}
 
 	@Override
 	public void alteraTurma(String idTurma, String campo, String novoValor)
 			throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		turma.alteraTurma(idTurma, campo, novoValor);
 	}
 
 	@Override
 	public void removerTurma(String idTurma) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		turma.removeTurma(idTurma);
 	}
 
 	@Override
 	public String getTurma(String idTurma) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return turma.getTurma(idTurma);
 	}
 
 	@Override
 	public void addCurso(String identificadorCurso, String nome)
 			throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		curso.add(identificadorCurso, nome);
 	}
 
 	@Override
 	public void alterarCurso(String identificador, String novoValor)
 			throws H2Exception {
-		// TODO Auto-generated method stub
+		curso.alterar(identificador, novoValor);
 		
 	}
 
 	@Override
 	public void removeCurso(String identificador) throws H2Exception {
-		// TODO Auto-generated method stub
 		
+		curso.remove(identificador);
 	}
 
 	@Override
 	public String getCurso(String idCurso) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getSala(String idSala) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+	
+		return curso.getCurso(idCurso);
 	}
 
 	@Override
 	public String getPeriodo(String idPeriodo, String idCurso)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return periodo.getPeriodo(idPeriodo,idCurso);
 	}
 
 	@Override

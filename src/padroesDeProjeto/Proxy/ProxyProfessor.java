@@ -39,7 +39,7 @@ public class ProxyProfessor {
 	public void add(String id, String nome) throws H2Exception{
 		Util.verificaAtributo(id,nome);
 		if(verificador.contemProfessor(id)){
-			throw new ExceptionProfessorJaCadastrado("Professor Já Cadastrado");
+			throw new ExceptionProfessorJaCadastrado();
 		}else{
 			commandAddProfessor.setProfessor((Professor) Util.factoryObject.objectTypeModelo("professor", id, nome));
 			controler.setCommand(commandAddProfessor);
@@ -65,7 +65,7 @@ public class ProxyProfessor {
 			controler.setCommand(commandAlteraProfessor);
 			controler.executarCommando();
 		}else{
-			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
+			throw new ExceptionProfessorNaoCadastrado();
 		}
 	}
 	
@@ -85,7 +85,7 @@ public class ProxyProfessor {
 			controler.setCommand(commandRemoveProfessor);
 			controler.executarCommando();
 		}else{
-			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
+			throw new ExceptionProfessorNaoCadastrado();
 		}
 	}
 	
@@ -99,9 +99,9 @@ public class ProxyProfessor {
 	public String getToStringProfessor(String id) throws H2Exception{
 		Util.verificaAtributo(id);
 		if(verificador.contemProfessor(id)){
-			return Util.factoryDao.getProfessorDao().getProfessores().get(id).toString();
+			return Util.fachadaDao.getProfessor(id);
 		}else{
-			throw new ExceptionProfessorNaoCadastrado("Professor Não Cadastrado");
+			throw new ExceptionProfessorNaoCadastrado();
 		}
 	}
 }

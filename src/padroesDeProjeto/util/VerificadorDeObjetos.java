@@ -61,4 +61,16 @@ public class VerificadorDeObjetos {
 		}
 		return false;
 	}
+	
+	/**
+	 * verifica se existe uma turma cadastrada no sistema com a chave passada
+	 * @param key - identificador da turma
+	 * @return - true ou false
+	 */
+	public boolean comtemTurma(String key){
+		if(Util.factoryDao.getTurmaDao().getTurmas().containsKey(key)){
+			return true;
+		}
+		return false;
+	}
 }

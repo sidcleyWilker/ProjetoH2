@@ -85,7 +85,19 @@ public class ProxySala {
 		}
 	}
 	
-	public String getSala(){
-		return null;
+	/**
+	 * verifica se o id é vazio ou nullo, verifica se a sala esta cadastrada no
+	 * sistema.
+	 * @param id - identificador da sala
+	 * @return - retorna o toString apartido id
+	 * @throws H2Exception - parametros invalidos ou sala não cadastrada
+	 */
+	public String getSala(String id) throws H2Exception{
+		Util.verificaAtributo(id);
+		if (verificador.comtemSala(id)){
+			return Util.fachadaDao.getSala(id);
+		}else{
+			throw new ExceptionSalaNaoCadastrada();
+		}
 	}
 }

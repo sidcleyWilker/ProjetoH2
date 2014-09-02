@@ -1,9 +1,14 @@
 package padroesDeProjeto.util;
 
+import java.util.ArrayList;
+
 import padroesDeProjeto.BancoDeDados.BD;
 import padroesDeProjeto.Exception.ExceptionParametroInvalido;
 import padroesDeProjeto.factory.FactoryDAO;
 import padroesDeProjeto.factory.FactoryObject;
+import padroesDeProjeto.modelo.Diciplina;
+import padroesDeProjeto.modelo.Periodo;
+import padroesDeProjeto.modelo.Turma;
 import padroesDeProjeto.objetosDAO.FachadaDAO;
 /**
  * class que vai ter metodos e atributos que são util para o projeto e atributos que são criados 
@@ -31,15 +36,5 @@ public class Util {
 				throw new ExceptionParametroInvalido();
 			}
 		}
-	}
-	
-	public static boolean convert(String valor) throws ExceptionParametroInvalido{
-		try{
-			@SuppressWarnings("unused")
-			int novoValor = Integer.parseInt(valor);
-		}catch( NumberFormatException e){
-			throw new ExceptionParametroInvalido();
-		}
-		return true;
 	}
 }

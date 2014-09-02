@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.7.0_67" class="java.beans.XMLDecoder">
  <object class="padroesDeProjeto.BancoDeDados.BD">
-  <void property="professores">
+  <void property="cursos">
    <void method="put">
-    <string>123</string>
-    <object class="padroesDeProjeto.modelo.Professor">
+    <string>ADS</string>
+    <object class="padroesDeProjeto.modelo.Curso">
      <void property="id">
-      <string>123</string>
+      <string>ADS</string>
      </void>
      <void property="nome">
-      <string>sasuke</string>
+      <string>Análise e Desenvolvimento de Sistemas</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="periodos">
+   <void method="put">
+    <string>2012.1-ADS</string>
+    <object class="padroesDeProjeto.modelo.Periodo">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Análise e Desenvolvimento de Sistemas</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>2012.1</string>
      </void>
     </object>
    </void>
