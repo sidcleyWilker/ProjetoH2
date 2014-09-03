@@ -1,0 +1,75 @@
+#######################
+######## TURMA ########
+#######################
+
+
+# 1. Adicionar (erro com atributo nulo ou vazio)
+
+expecterror "Atributo inválido" addTurma nomeTurma="" matriculaProf="222" codigoDisciplina="ADS_PP" idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma= matriculaProf="222" codigoDisciplina="ADS_PP" idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf= codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina="" idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina= idSala="S13_C" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="PP" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala="" idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="PP" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala= idPeriodo="2012.1"
+expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo=""
+expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo=
+
+
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="0101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="9999" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="AD_SPD" idSala="S13_C" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="TC_ELP" idSala="S13_C" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S100_C" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S10_D" idPeriodo="2012.2"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2013.200"
+expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2013.2"
+
+addSala nome="12" bloco="D"
+addDisciplinaAoPeriodo periodo="2014.1" nomeDaDisciplina="Banco de Dados I" sigla="BD1" nomeCurso="ADS" cargaHoraria=100
+addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala="D_12" idPeriodo="2014.1"
+
+
+# 2. Alterar
+
+expecterror "Atributo inválido" alterarTurma idTurma="" atributo="nome" novoValor="BBB"
+expecterror "Atributo inválido" alterarTurma idTurma= atributo="professor" novoValor="BBB"
+expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo="" novoValor="BD2"
+expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo= novoValor="BD2"
+expecterror "Atributo inválido" alterarTurma idTurma="PP" atributo="disciplina" novoValor=""
+expecterror "Atributo inválido" alterarTurma idTurma="PP" atributo="periodo" novoValor=
+
+# (alterando e recuperando os dados simultaneamente para verificar se está ocorrendo o esperado)
+
+expect "222, ADS_BD1, 2014.1, D_12" getTurma idTurma="1"
+alterarTurma idTurma="1" atributo="professor" novoValor="1234"
+expect "1234, ADS_BD1, 2014.1, D_12" getTurma idTurma="1"
+
+# 3. Remover
+
+expecterror "Atributo inválido" removerTurma idTurma=""
+expecterror "Atributo inválido" removerTurma idTurma=
+
+expecterror "Turma não cadastrada" removerTurma idTurma="BD1"
+expecterror "Turma não cadastrada" removerTurma idTurma="BD3"
+expecterror "Turma não cadastrada" removerTurma idTurma="PPP"
+expecterror "Turma não cadastrada" removerTurma idTurma="PDP"
+expecterror "Turma não cadastrada" removerTurma idTurma="LLP"
+expecterror "Turma não cadastrada" removerTurma idTurma="123PP"
+expecterror "Turma não cadastrada" removerTurma idTurma="P_P"
+
+removerTurma idTurma="1"
+expecterror "Turma não cadastrada" removerTurma idTurma="1"
+
+# 4. Recuperar Arquivos com Erro
+
+expecterror "Atributo inválido" getTurma idTurma=""
+expecterror "Atributo inválido" getTurma idTurma=
+expecterror "Turma não cadastrada" getTurma idTurma="BD1"
+expecterror "Turma não cadastrada" getTurma idTurma="BD3"
+expecterror "Turma não cadastrada" getTurma idTurma="P_P"
+expecterror "Turma não cadastrada" getTurma idTurma="ADS_PP"
+expecterror "Turma não cadastrada" getTurma idTurma="ADS_BD2"
+expecterror "Turma não cadastrada" getTurma idTurma="TCE"
+

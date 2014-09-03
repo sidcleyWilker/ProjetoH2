@@ -3,20 +3,31 @@
  <object class="padroesDeProjeto.BancoDeDados.BD">
   <void property="cursos">
    <void method="put">
+    <string>TCE</string>
+    <object class="padroesDeProjeto.modelo.Curso">
+     <void property="id">
+      <string>TCE</string>
+     </void>
+     <void property="nome">
+      <string>Tecnico e ....</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
     <string>ADS</string>
     <object class="padroesDeProjeto.modelo.Curso">
      <void property="id">
       <string>ADS</string>
      </void>
      <void property="nome">
-      <string>Analise e de...</string>
+      <string>Analise e ....</string>
      </void>
     </object>
    </void>
   </void>
   <void property="diciplinas">
    <void method="put">
-    <string>id</string>
+    <string>ADS_PP</string>
     <object class="padroesDeProjeto.modelo.Diciplina">
      <void property="cargaHoraria">
       <int>100</int>
@@ -27,15 +38,87 @@
         <string>ADS</string>
        </void>
        <void property="nome">
-        <string>Analise e de...</string>
+        <string>Analise e ....</string>
        </void>
       </object>
      </void>
      <void property="id">
-      <string>id</string>
+      <string>ADS_PP</string>
      </void>
      <void property="nome">
-      <string>bd1</string>
+      <string>Padrões de Projeto</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>TCE_LP</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>100</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>TCE</string>
+       </void>
+       <void property="nome">
+        <string>Tecnico e ....</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>TCE_LP</string>
+     </void>
+     <void property="nome">
+      <string>Levantar Parede</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ADS_BD1</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>100</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Analise e ....</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>ADS_BD1</string>
+     </void>
+     <void property="nome">
+      <string>Banco de Dados I</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ADS_PD</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>80</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Analise e ....</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>ADS_PD</string>
+     </void>
+     <void property="nome">
+      <string>Processo de Desenvolvimento de Sistemas</string>
      </void>
     </object>
    </void>
@@ -50,12 +133,30 @@
         <string>ADS</string>
        </void>
        <void property="nome">
-        <string>Analise e de...</string>
+        <string>Analise e ....</string>
        </void>
       </object>
      </void>
      <void property="id">
       <string>2012.1</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>2012.2-TCE</string>
+    <object class="padroesDeProjeto.modelo.Periodo">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>TCE</string>
+       </void>
+       <void property="nome">
+        <string>Tecnico e ....</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>2012.2</string>
      </void>
     </object>
    </void>

@@ -51,6 +51,7 @@ public class ProxyDiciplina {
 			int cargaHoraria, String idCurso, String idPeriodo)
 			throws H2Exception {
 		Util.verificaAtributo(idDisciplina, nomeDisciplina, idCurso, idPeriodo);
+		Util.verificaAtributoCargaHoraria(cargaHoraria);
 		if (!verificador.comtemDiciplina(idDisciplina)) {
 			if (contemCursoPeriodo(idCurso,idPeriodo)) {
 				commandAddDciciplina.setDicipina(Util.factoryObject.criarDiciplina(idDisciplina, nomeDisciplina,cargaHoraria, idCurso, idPeriodo));
@@ -87,8 +88,8 @@ public class ProxyDiciplina {
 		if (verificador.comtemCurso(idCurso)&& verificador.comtemDiciplina(sigla)) {
 			// PEGAR A DICIPLINA QUE CONTEM UM CURSO E VERIFICAR SE O CURSO
 			// PASSASO É IGUAL OU CURSO DA DICIPLINA
-			if (Util.bd.getDiciplinas().get(sigla).getCurso().equals(Util.bd.getCursos().get(idCurso))) {
-				if(!atributo.equals("cargaHoraria") && !atributo.equals("nome")){
+			if (Util.bd.getDiciplinas().get(sigla).getCurso().getId().equals(Util.bd.getCursos().get(idCurso).getId())) {
+				if((atributo.equals("cargaHoraria")) || (atributo.equals("nome"))){
 					commandAlteraDiciplina.setKeyDiciplina(sigla);
 					commandAlteraDiciplina.setAtributo(atributo);
 					commandAlteraDiciplina.setNovoValor(novoValor);
@@ -119,23 +120,23 @@ public class ProxyDiciplina {
 		if (verificador.comtemCurso(idCurso)&& verificador.comtemDiciplina(idDisciplina)) {
 			// PEGAR A DICIPLINA QUE CONTEM UM CURSO E VERIFICAR SE O CURSO
 			// PASSASO É IGUAL OU CURSO DA DICIPLINA
-			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().equals(Util.bd.getCursos().get(idCurso))) {
+			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().getId().equals(Util.bd.getCursos().get(idCurso).getId())) {
 				commandRemoveDiciplina.setDiciplina(Util.bd.getDiciplinas().get(idDisciplina));
 				controle.setCommand(commandRemoveDiciplina);
 				controle.executarCommando();
 			} else {
 				// a diciplina não é desse curso
-				throw new ExceptionParametroInvalido();
+				throw new ExceptionDiciplinaNaoCadastrada();
 			}
 		} else {
-			throw new ExceptionParametroInvalido();
+			throw new ExceptionDiciplinaNaoCadastrada();
 		}
 	}
 
 	public String toStringDiciplina(String idCurso, String idDisciplina) throws H2Exception{
 		Util.verificaAtributo(idCurso,idDisciplina);
 		if(verificador.comtemCurso(idCurso) && verificador.comtemDiciplina(idDisciplina)){
-			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().equals(Util.bd.getCursos().get(idCurso))) {
+			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().getId().equals(Util.bd.getCursos().get(idCurso).getId())) {
 				return Util.fachadaDao.getDisciplina(idDisciplina);
 			}else{
 				throw new ExceptionParametroInvalido();

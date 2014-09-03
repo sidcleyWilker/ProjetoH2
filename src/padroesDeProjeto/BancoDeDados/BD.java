@@ -1,9 +1,9 @@
 package padroesDeProjeto.BancoDeDados;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import padroesDeProjeto.Alocacao.Alocacao;
 import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Periodo;
@@ -29,6 +29,7 @@ public class BD {
 	private Map<String,Diciplina> diciplinas = new HashMap<>();
 	private Map<String,Periodo> periodos = new HashMap<>();
 	private Map<String,Turma> turmas = new HashMap<>();
+	private Map<String,Alocacao> alocacoes = new HashMap<>();
 	
 	public Map<String, Professor> getProfessores() {
 		return professores;
@@ -80,6 +81,15 @@ public class BD {
 		this.turmas = turmas;
 	}
 
+	
+	public Map<String, Alocacao> getAlocacoes() {
+		return alocacoes;
+	}
+
+	public void setAlocacoes(Map<String, Alocacao> alocacoes) {
+		this.alocacoes = alocacoes;
+	}
+
 	/**
 	 * metodo que salva a class BD em um arquivo xml
 	 */
@@ -98,5 +108,6 @@ public class BD {
 		this.diciplinas = bd.getDiciplinas();
 		this.periodos = bd.getPeriodos();
 		this.turmas = bd.getTurmas();
+		this.alocacoes = bd.getAlocacoes();
 	}
 }

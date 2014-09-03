@@ -49,7 +49,7 @@ public class Diciplina extends Modelo{
 
 	@Override
 	public String toString() {
-		return curso.getId()+" - "+getNome();
+		return getNome();
 	}
 
 }

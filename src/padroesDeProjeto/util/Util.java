@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import padroesDeProjeto.BancoDeDados.BD;
 import padroesDeProjeto.Exception.ExceptionParametroInvalido;
+import padroesDeProjeto.Exception.H2Exception;
 import padroesDeProjeto.factory.FactoryDAO;
 import padroesDeProjeto.factory.FactoryObject;
 import padroesDeProjeto.modelo.Diciplina;
@@ -34,6 +35,15 @@ public class Util {
 			}
 			if( !(string.matches("[a-zA-Zà-úÀ-Ú\\s .,!?:;_0-9]+"))){
 				throw new ExceptionParametroInvalido();
+			}
+		}
+	}
+	
+	public static void verificaAtributoCargaHoraria(Integer ... atributo) throws H2Exception{
+		for(int i : atributo ){
+			if(i <= 0){
+				throw new ExceptionParametroInvalido();
+				
 			}
 		}
 	}

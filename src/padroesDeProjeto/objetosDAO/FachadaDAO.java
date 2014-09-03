@@ -136,27 +136,4 @@ public class FachadaDAO {
 		return factoryDAO.getCursoDao().getCuros().get(idCurso).toString();
 	}
 
-	public String alocaTurmaAoHorario(String idTurma, String diaDaSemana,
-			int horaInicio, int horafim){
-		
-		return null;
-	}
-
-
-	public String desalocaTurmaDoHorario(String idTurma, String diaDaSemana,int horaInicio, int horaFim) {
-
-		return null;
-	}
-
-	
-	public String getHorario(String idTurma)  {
-	
-		return null;
-	}
-	
-	public String getTurmas(String diaDaSemana, int horaInicio, int horaFim){
-
-		return null;
-	}
-
 }
