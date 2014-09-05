@@ -3,7 +3,7 @@ package padroesDeProjeto.BancoDeDados;
 import java.util.HashMap;
 import java.util.Map;
 
-import padroesDeProjeto.Alocacao.Alocacao;
+import padroesDeProjeto.Alocacao.Horario;
 import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Periodo;
@@ -29,7 +29,7 @@ public class BD {
 	private Map<String,Diciplina> diciplinas = new HashMap<>();
 	private Map<String,Periodo> periodos = new HashMap<>();
 	private Map<String,Turma> turmas = new HashMap<>();
-	private Map<String,Alocacao> alocacoes = new HashMap<>();
+	private Horario horario;
 	
 	public Map<String, Professor> getProfessores() {
 		return professores;
@@ -81,13 +81,12 @@ public class BD {
 		this.turmas = turmas;
 	}
 
-	
-	public Map<String, Alocacao> getAlocacoes() {
-		return alocacoes;
+	public Horario getHorario() {
+		return horario;
 	}
 
-	public void setAlocacoes(Map<String, Alocacao> alocacoes) {
-		this.alocacoes = alocacoes;
+	public void setHorario(Horario horario) {
+		this.horario = horario;
 	}
 
 	/**
@@ -108,6 +107,6 @@ public class BD {
 		this.diciplinas = bd.getDiciplinas();
 		this.periodos = bd.getPeriodos();
 		this.turmas = bd.getTurmas();
-		this.alocacoes = bd.getAlocacoes();
+		this.horario = bd.getHorario();
 	}
 }

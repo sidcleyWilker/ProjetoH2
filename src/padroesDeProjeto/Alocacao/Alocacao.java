@@ -1,20 +1,26 @@
 package padroesDeProjeto.Alocacao;
 
 import padroesDeProjeto.modelo.Turma;
-
+/**
+ * class vai representar a alocação de uma turma em um dia
+ * da semana num determinado horario
+ * @author Sidcley
+ *
+ */
 public class Alocacao {
 
 	private Turma turma;
 	private String diaSemana;
-	private int horaInicil;
+	private int horaIni;
 	private int horaFim;
 	
-	public Alocacao(Turma turma, String diaSemana, int horaInicil, int horaFim) {
+	public Alocacao(Turma turma, String diaSemana, int horaIni, int horaFim) {
 		this.turma = turma;
 		this.diaSemana = diaSemana;
-		this.horaInicil = horaInicil;
+		this.horaIni = horaIni;
 		this.horaFim = horaFim;
 	}
+	
 	public Turma getTurma() {
 		return turma;
 	}
@@ -27,11 +33,11 @@ public class Alocacao {
 	public void setDiaSemana(String diaSemana) {
 		this.diaSemana = diaSemana;
 	}
-	public int getHoraInicil() {
-		return horaInicil;
+	public int getHoraIni() {
+		return horaIni;
 	}
-	public void setHoraInicil(int horaInicil) {
-		this.horaInicil = horaInicil;
+	public void setHoraIni(int horaIni) {
+		this.horaIni = horaIni;
 	}
 	public int getHoraFim() {
 		return horaFim;
@@ -40,8 +46,10 @@ public class Alocacao {
 		this.horaFim = horaFim;
 	}
 	
+	
 	@Override
 	public String toString(){
-		return "id turma: "+getTurma().getId()+"-"+diaSemana+"-"+horaInicil+"-"+horaFim;
+		return turma.getId()+ " - " +getDiaSemana() + " ás "
+				+ getHoraIni() + " - " +getHoraFim();
 	}
 }

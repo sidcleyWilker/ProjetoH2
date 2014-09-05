@@ -9,7 +9,7 @@ public class App {
 	public static void main(String[] args) throws H2Exception {
 		
 		FachadaCliente cl = new FachadaCliente();
-		cl.removeDisciplina("TCE","TCE_DP");
+		
 
 	}
 

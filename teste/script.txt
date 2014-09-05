@@ -5,35 +5,41 @@
 
 # 1. Adicionar (erro com atributo nulo ou vazio)
 
-expecterror "Atributo inválido" addTurma nomeTurma="" matriculaProf="222" codigoDisciplina="ADS_PP" idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma= matriculaProf="222" codigoDisciplina="ADS_PP" idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf= codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina="" idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina= idSala="S13_C" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="PP" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala="" idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="PP" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala= idPeriodo="2012.1"
-expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo=""
-expecterror "Atributo inválido" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo=
+##String id, Curso curso, Professor professor, Diciplina diciplina, Sala sala, Periodo periodo
+
+expecterror "Atributo inválido" addTurma id=""  curso="ADS" matriculaProf="0rv101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"    
+expecterror "Atributo inválido" addTurma id="turma2"  curso= matriculaProf="01fvv01" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
+expecterror "Atributo inválido" addTurma id="turma3"  curso="PPO" matriculaProf="" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
+expecterror "Atributo inválido" addTurma id="turma5"  curso="MACHO" matriculaProf="01gh01" codigoDisciplina= idSala="S13_C" idPeriodo="2012.2" 
+expecterror "Atributo inválido" addTurma id="turma6"  curso="XXT" matriculaProf="01hg01" codigoDisciplina="ADS_PD" idSala= idPeriodo="2012.2" 
+expecterror "Atributo inválido" addTurma id="turma9"  curso="OOP" matriculaProf="0xc101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="" 
+expecterror "Atributo inválido" addTurma id="turma8"  curso="PoS" matriculaProf="0vt101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
 
 
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="0101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="9999" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="AD_SPD" idSala="S13_C" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="1234" codigoDisciplina="TC_ELP" idSala="S13_C" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S100_C" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S10_D" idPeriodo="2012.2"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2013.200"
-expecterror "Recurso não cadastrado" addTurma nomeTurma="PD" matriculaProf="222" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2013.2"
+## adicionar os atributos antes :D
+addCurso sigla="ADS" nome="Análise e Desenvolvimento de Sistemas"
 
-addSala nome="12" bloco="D"
-addDisciplinaAoPeriodo periodo="2014.1" nomeDaDisciplina="Banco de Dados I" sigla="BD1" nomeCurso="ADS" cargaHoraria=100
-addTurma nomeTurma="BD1" matriculaProf="222" codigoDisciplina="ADS_BD1" idSala="D_12" idPeriodo="2014.1"
+addProfessor id="111" nome="Mirna Maia"
+addProfessor id="222" nome="Sidcley Wilker"
+
+addSala nome="Sala 10" bloco="D"
+addSala nome="Sala 11" bloco="D"
+
+addPeriodo nomePeriodo="2012.1" sigla="ADS"
+addPeriodo nomePeriodo="2012.2" sigla="ADS"
+
+addDisciplinaAoPeriodo  sigla="ADS_PP" nomeDaDisciplina="Padrões de Projeto"  cargaHoraria=100 nomeCurso="ADS"  periodo="2012.1"
+addDisciplinaAoPeriodo  sigla="ADS_BD1" nomeDaDisciplina="Banco De Dados"  cargaHoraria=100 nomeCurso="ADS"  periodo="2012.1"
+
+## adicionar as turmas
+addTurma id="turma1" curso="ADS" professor="111" diciplina="ADS_PP" sala="Sala 10" periodo="2012.1"
+addTurma id="turma2" curso="ADS" professor="222" diciplina="ADS_BD1" sala="Sala 11" periodo="2012.1"
+
 
 
 # 2. Alterar
 
-expecterror "Atributo inválido" alterarTurma idTurma="" atributo="nome" novoValor="BBB"
+expecterror "Atributo inválido" alterarTurma idTurma="" campo="nome" novoValor="BBB"
 expecterror "Atributo inválido" alterarTurma idTurma= atributo="professor" novoValor="BBB"
 expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo="" novoValor="BD2"
 expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo= novoValor="BD2"

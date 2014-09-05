@@ -86,7 +86,7 @@ public class FactoryObject {
 				Util.factoryDao.getProfessorDao().getProfessores().get(idProfessor),
 				Util.factoryDao.getDiciplinaDao().getDiciplinas().get(idDisciplina),
 				Util.factoryDao.getSalaDao().getSalas().get(idSala),
-				Util.factoryDao.getPeriodoDao().getPeriodos().get(idPeriodo));
+				Util.factoryDao.getPeriodoDao().getPeriodos().get(idPeriodo+""+idCurso));
 	}
 	
 }

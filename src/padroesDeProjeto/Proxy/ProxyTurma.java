@@ -48,8 +48,8 @@ public class ProxyTurma {
 	public void alteraTurma(String idTurma, String campo, String novoValor) throws H2Exception{
 		Util.verificaAtributo(idTurma,campo,novoValor);
 		if(verificador.comtemTurma(idTurma)){
-			if(!campo.equals("professor") && !campo.equals("diciplina") && !campo.equals("sala")
-					&& campo.equals("periodo")){
+			if(campo.equals("professor") || campo.equals("diciplina") || campo.equals("sala")
+					|| campo.equals("periodo")){
 				throw new ExceptionParametroInvalido();
 			}else{
 				commandAlteraTurma.setTurma(Util.factoryDao.getTurmaDao().getTurmas().get(idTurma));
@@ -90,7 +90,7 @@ public class ProxyTurma {
 				Util.factoryDao.getProfessorDao().getProfessores().containsKey(idProfessor)&&
 				Util.factoryDao.getDiciplinaDao().getDiciplinas().containsKey(idDisciplina)&&
 				Util.factoryDao.getSalaDao().getSalas().containsKey(idSala)&&
-				Util.factoryDao.getPeriodoDao().getPeriodos().containsKey(idPeriodo)){
+				Util.factoryDao.getPeriodoDao().getPeriodos().containsKey(idPeriodo+"-"+idCurso)){
 			return true;
 		}
 		
