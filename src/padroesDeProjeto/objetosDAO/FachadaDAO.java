@@ -7,7 +7,11 @@ import padroesDeProjeto.modelo.Periodo;
 import padroesDeProjeto.modelo.Professor;
 import padroesDeProjeto.modelo.Sala;
 import padroesDeProjeto.modelo.Turma;
-
+/**
+ * fachada que vai fazer a ligação entre os objetos DAO e os command
+ * @author Sidcley
+ *
+ */
 public class FachadaDAO {
 
 	private FactoryDAO factoryDAO;
@@ -57,10 +61,7 @@ public class FachadaDAO {
 		return factoryDAO.getDiciplinaDao().getDiciplinas().get(key).toString();
 	}
 
-	/**
-	 * 
-	 * @param objectTypeModelo
-	 */
+	
 	public void addSala(Sala sala){
 		factoryDAO.getSalaDao().criar("sala", sala);
 	}
@@ -101,7 +102,7 @@ public class FachadaDAO {
 	}
 
 	
-	public void alteraTurma(String idTurma, String campo, Object novoValor){
+	public void alteraTurma(String idTurma, String campo, String novoValor){
 		factoryDAO.getTurmaDao().alterar(idTurma, campo, novoValor);
 	}
 

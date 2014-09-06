@@ -2,6 +2,7 @@ import padroesDeProjeto.BancoDeDados.BD;
 import padroesDeProjeto.BancoDeDados.IO;
 import padroesDeProjeto.Exception.H2Exception;
 import padroesDeProjeto.Fachada.FachadaCliente;
+import padroesDeProjeto.util.Util;
 
 
 public class App {
@@ -10,7 +11,8 @@ public class App {
 		
 		FachadaCliente cl = new FachadaCliente();
 		
-
+		//cl.alteraTurma("turma1", "professor", "222");
+		
 	}
 
 }

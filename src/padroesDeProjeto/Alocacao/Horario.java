@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map; 
 
 import padroesDeProjeto.util.Util;
-
+/**
+ * class onde esta guardada a grande semanal com as trumas cadastradas 
+ * nos dias da semana
+ * @author Sidcley
+ *
+ */
 public class Horario {
 
 	private Map<String,Alocacao> segunda = new HashMap<>();

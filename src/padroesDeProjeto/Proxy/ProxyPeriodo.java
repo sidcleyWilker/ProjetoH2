@@ -66,6 +66,13 @@ public class ProxyPeriodo {
 		}
 	}
 	
+	/**
+	 * retorna o toString de periodo caso os parametros passados esteja tudo certo
+	 * @param idPeriodo
+	 * @param idCurso
+	 * @return
+	 * @throws H2Exception
+	 */
 	public String getPeriodo(String idPeriodo,String idCurso) throws H2Exception{
 		Util.verificaAtributo(idPeriodo,idCurso);
 		if(verificador.comtemPeriodo(idPeriodo+"-"+idCurso)){

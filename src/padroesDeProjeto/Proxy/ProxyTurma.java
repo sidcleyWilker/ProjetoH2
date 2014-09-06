@@ -27,7 +27,18 @@ public class ProxyTurma {
 		this.controler = new Comtroler();
 	}
 	
-	
+	/**
+	 * veridica todos os parametros se são nulos ou vazios e verifica se contem os objetos
+	 * que formão uma turma, se estiver tudo ok cria um objeto turma e manda executar o comando de
+	 * Addturma
+	 * @param idTurma - identificador da turma
+	 * @param idCurso - identificador do curso
+	 * @param idProfessor - identificador do professor
+	 * @param idDisciplina - identificador da diciplina
+	 * @param idSala - identificador da sala
+	 * @param idPeriodo - identificador do periodo
+	 * @throws H2Exception
+	 */
 	public void addTurma(String idTurma, String idCurso,String idProfessor, String idDisciplina,
 			String idSala, String idPeriodo)throws H2Exception{
 		Util.verificaAtributo(idTurma,idCurso,idProfessor,idDisciplina,idSala,idPeriodo);
@@ -44,25 +55,39 @@ public class ProxyTurma {
 		}
 	}
 	
-	
+	/**
+	 * verifica se os atributos são vazios ou nulos, verifica se a turma esta cadastradda,
+	 * verifica se o campo comtem apenas os atributos que podem ser alterados, para poder
+	 * executar o commandAlteraTurma
+	 * @param idTurma - identificador da turma
+	 * @param campo - campo que vai mudar
+	 * @param novoValor o novo valor para campo
+	 * @throws H2Exception
+	 */
 	public void alteraTurma(String idTurma, String campo, String novoValor) throws H2Exception{
 		Util.verificaAtributo(idTurma,campo,novoValor);
 		if(verificador.comtemTurma(idTurma)){
 			if(campo.equals("professor") || campo.equals("diciplina") || campo.equals("sala")
 					|| campo.equals("periodo")){
-				throw new ExceptionParametroInvalido();
-			}else{
 				commandAlteraTurma.setTurma(Util.factoryDao.getTurmaDao().getTurmas().get(idTurma));
 				commandAlteraTurma.setCampo(campo);
 				commandAlteraTurma.setNovoValor(novoValor);
 				controler.setCommand(commandAlteraTurma);
 				controler.executarCommando();
+			}else{
+				throw new ExceptionParametroInvalido();
 			}
 		}else{
 			throw new ExceptionTurmaNaoCadastrada();
 		}
 	}
 	
+	/**
+	 * verifica o atributo, verifica se ele esta cadastrado no sistema, para poder fazer a remoção
+	 * dele no sistema
+	 * @param idTurma - identificador da turma
+	 * @throws H2Exception
+	 */
 	public void removeTurma(String idTurma) throws H2Exception{
 		Util.verificaAtributo(idTurma);
 		if(verificador.comtemTurma(idTurma)){
@@ -97,11 +122,20 @@ public class ProxyTurma {
 		return false;
 	}
 
+	/**
+	 * verifica o atributo passado, verifica se existe uma turma cadastrado no sistema
+	 * para poder retorna o seu toString
+	 * @param idTurma - identificador da turma
+	 * @return - toString
+	 * @throws H2Exception
+	 */
 	public String getTurma(String idTurma) throws H2Exception {
 		Util.verificaAtributo(idTurma);
 		if(verificador.comtemTurma(idTurma)){
 			return Util.fachadaDao.getTurma(idTurma);
+		}else{
+			throw new ExceptionTurmaNaoCadastrada();
 		}
-		return null;
+		
 	}
 }

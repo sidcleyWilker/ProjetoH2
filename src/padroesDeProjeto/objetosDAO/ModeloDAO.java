@@ -27,6 +27,13 @@ public abstract class ModeloDAO {
 		Util.bd.salvar();
 	}
 	
+	/**
+	 * atualiza um objeto do sistema alterado o seu nome, identifca qual é o objeto para poder 
+	 * fazer a alteração
+	 * @param object - objeto que vai ser mudado
+	 * @param id - o identificador do objeto
+	 * @param novoValor - novo valor para o objeto
+	 */
 	public void atualizar(String object,String id, String novoValor){
 		Util.bd.load();
 		if(object.equals("professor")){
@@ -39,6 +46,11 @@ public abstract class ModeloDAO {
 		Util.bd.salvar();
 	}
 	
+	/**
+	 * identifica qual é o objeto que vai ser removido do sistema, faz a remoção e depoi salva 
+	 * @param object - tipo do objeto a ser removido
+	 * @param id - identificador do objeto
+	 */
 	public void remover(String object,String id){
 		Util.bd.load();
 		if(object.equals("professor")){

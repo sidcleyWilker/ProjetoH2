@@ -133,6 +133,13 @@ public class ProxyDiciplina {
 		}
 	}
 
+	/**
+	 * verifica os atributos e retorna o toString da diciplina caso esteja tudo certo
+	 * @param idCurso - identificador do curso
+	 * @param idDisciplina - identificador da diciplina
+	 * @return - toString
+	 * @throws H2Exception
+	 */
 	public String toStringDiciplina(String idCurso, String idDisciplina) throws H2Exception{
 		Util.verificaAtributo(idCurso,idDisciplina);
 		if(verificador.comtemCurso(idCurso) && verificador.comtemDiciplina(idDisciplina)){
@@ -146,6 +153,12 @@ public class ProxyDiciplina {
 		}
 	}
 	
+	/**
+	 * verifica se esta cadastrado no sistema o curso e o periodo com esses id
+	 * @param idCurso - identificador do curso
+	 * @param idPeriodo - identificador do periodo
+	 * @return
+	 */
 	private boolean contemCursoPeriodo(String idCurso, String idPeriodo){
 		if(verificador.comtemCurso(idCurso) && verificador.comtemPeriodo(idPeriodo+"-"+idCurso)){
 			return true;

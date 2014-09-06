@@ -5,7 +5,6 @@ import padroesDeProjeto.CommandCurso.CommandAlteraCurso;
 import padroesDeProjeto.CommandCurso.CommandRemoveCurso;
 import padroesDeProjeto.Exception.ExceptionCursoJaCadastrado;
 import padroesDeProjeto.Exception.ExceptionCursoNaoCadastrado;
-import padroesDeProjeto.Exception.ExceptionParametroInvalido;
 import padroesDeProjeto.Exception.H2Exception;
 import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
@@ -32,6 +31,13 @@ public class ProxyCurso {
 		this.controler = new Comtroler();
 	}
 	
+	/**
+	 * verifica os atributos passados, verifica se já existe um curso com esse id,
+	 * cria um curso, altera o command da class controle e pede para executar o command
+	 * @param idrCurso - identificador do curso
+	 * @param nome - nome do curso
+	 * @throws H2Exception - curso já cadastrado ou parametros invalids
+	 */
 	public void add(String idrCurso, String nome) throws H2Exception{
 		Util.verificaAtributo(idrCurso,nome);
 		if(!verificador.comtemCurso(idrCurso)){
@@ -43,6 +49,14 @@ public class ProxyCurso {
 		}
 	}
 	
+	/**
+	 *verifica os atributos passados, verifica se já existe um curso com esse id
+	 *para fazer a alteração, pega o objeto do sistema com esse id manda para a
+	 * class commadAlteraCurso altera o command da class controle e pede para executar  
+	 * @param id - identificador do curso
+	 * @param novoValor - novo valor para o nomo do curso
+	 * @throws H2Exception
+	 */
 	public void alterar(String id, String novoValor) throws H2Exception{
 		Util.verificaAtributo(id,novoValor);
 		if(verificador.comtemCurso(id)){
@@ -55,6 +69,12 @@ public class ProxyCurso {
 		}
 	}
 	
+	/**
+	 * verifica o atributo,verifica se ele esta no sistema, executa o commandRemove curso,
+	 * e remove em cascata os objetos ligados ou curso
+	 * @param id
+	 * @throws H2Exception
+	 */
 	public void remove(String id) throws H2Exception{
 		Util.verificaAtributo(id);
 		if(verificador.comtemCurso(id)){
@@ -93,6 +113,12 @@ public class ProxyCurso {
 		}
 	}
 	
+	/**
+	 * retorna o toString de um curso se ele estiver cadastrado no sistema
+	 * @param id- identificador do curso
+	 * @return - toString do curso
+	 * @throws H2Exception- curso não cadastrado no sistema
+	 */
 	public String getCurso(String id) throws H2Exception{
 		Util.verificaAtributo(id);
 		if(verificador.comtemCurso(id)){

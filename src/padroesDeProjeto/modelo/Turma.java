@@ -62,7 +62,8 @@ public class Turma {
 	
 	@Override
 	public String toString(){
-		return id+""+"";
+		return id+"-"+professor.getId()+"-"+curso.getId()+"-"+diciplina.getId()+"-"+
+	periodo.getId()+"-"+sala.getId();
 	}
 
 }

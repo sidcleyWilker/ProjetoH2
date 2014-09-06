@@ -12,7 +12,7 @@ public class CommandAlteraTurma implements Command{
 
 	private Turma turma;
 	private String campo;
-	private Object novoValor;
+	private String novoValor;
 	
 	public CommandAlteraTurma() {
 		// TODO Auto-generated constructor stub
@@ -30,7 +30,7 @@ public class CommandAlteraTurma implements Command{
 	}
 
 
-	public void setNovoValor(Object novoValor) {
+	public void setNovoValor(String novoValor) {
 		this.novoValor = novoValor;
 	}
 

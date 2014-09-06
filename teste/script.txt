@@ -39,43 +39,44 @@ addTurma id="turma2" curso="ADS" professor="222" diciplina="ADS_BD1" sala="Sala 
 
 # 2. Alterar
 
-expecterror "Atributo inválido" alterarTurma idTurma="" campo="nome" novoValor="BBB"
-expecterror "Atributo inválido" alterarTurma idTurma= atributo="professor" novoValor="BBB"
-expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo="" novoValor="BD2"
-expecterror "Atributo inválido" alterarTurma idTurma="BD1" atributo= novoValor="BD2"
-expecterror "Atributo inválido" alterarTurma idTurma="PP" atributo="disciplina" novoValor=""
-expecterror "Atributo inválido" alterarTurma idTurma="PP" atributo="periodo" novoValor=
+expecterror "Atributo inválido" alteraTurma idTurma="" campo="nome" novoValor="BBB"
+expecterror "Atributo inválido" alteraTurma idTurma= atributo="professor" novoValor="BBB"
+expecterror "Atributo inválido" alteraTurma idTurma="BD1" atributo="" novoValor="BD2"
+expecterror "Atributo inválido" alteraTurma idTurma="BD1" atributo= novoValor="BD2"
+expecterror "Atributo inválido" alteraTurma idTurma="PP" atributo="disciplina" novoValor=""
+expecterror "Atributo inválido" alteraTurma idTurma="PP" atributo="periodo" novoValor=
 
 # (alterando e recuperando os dados simultaneamente para verificar se está ocorrendo o esperado)
 
-expect "222, ADS_BD1, 2014.1, D_12" getTurma idTurma="1"
-alterarTurma idTurma="1" atributo="professor" novoValor="1234"
-expect "1234, ADS_BD1, 2014.1, D_12" getTurma idTurma="1"
+expect "turma1-111-ADS-ADS_PP-2012.1-Sala 10" getTurma idTurma="turma1"
+alteraTurma idTurma="turma1" atributo="professor" novoValor="222"
+expect "turma1-222-ADS-ADS_PP-2012.1-Sala 10" getTurma idTurma="turma1"
+expect "turma2-222-ADS-ADS_BD1-2012.1-Sala 11" getTurma idTurma="turma2"
 
 # 3. Remover
 
 expecterror "Atributo inválido" removerTurma idTurma=""
 expecterror "Atributo inválido" removerTurma idTurma=
 
-expecterror "Turma não cadastrada" removerTurma idTurma="BD1"
-expecterror "Turma não cadastrada" removerTurma idTurma="BD3"
-expecterror "Turma não cadastrada" removerTurma idTurma="PPP"
-expecterror "Turma não cadastrada" removerTurma idTurma="PDP"
-expecterror "Turma não cadastrada" removerTurma idTurma="LLP"
-expecterror "Turma não cadastrada" removerTurma idTurma="123PP"
-expecterror "Turma não cadastrada" removerTurma idTurma="P_P"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="BD1"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="BD3"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="PPP"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="PDP"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="LLP"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="123PP"
+expecterror "Turma Não Cadastrada" removerTurma idTurma="P_P"
 
-removerTurma idTurma="1"
-expecterror "Turma não cadastrada" removerTurma idTurma="1"
+removerTurma idTurma="turma2"
+#expecterror "Turma não cadastrada" removerTurma idTurma="turma2"
 
 # 4. Recuperar Arquivos com Erro
 
 expecterror "Atributo inválido" getTurma idTurma=""
 expecterror "Atributo inválido" getTurma idTurma=
-expecterror "Turma não cadastrada" getTurma idTurma="BD1"
-expecterror "Turma não cadastrada" getTurma idTurma="BD3"
-expecterror "Turma não cadastrada" getTurma idTurma="P_P"
-expecterror "Turma não cadastrada" getTurma idTurma="ADS_PP"
-expecterror "Turma não cadastrada" getTurma idTurma="ADS_BD2"
-expecterror "Turma não cadastrada" getTurma idTurma="TCE"
+expecterror "Turma Não Cadastrada" getTurma idTurma="BD1"
+expecterror "Turma Não Cadastrada" getTurma idTurma="BD3"
+expecterror "Turma Não Cadastrada" getTurma idTurma="P_P"
+expecterror "Turma Não Cadastrada" getTurma idTurma="ADS_PP"
+expecterror "Turma Não Cadastrada" getTurma idTurma="ADS_BD2"
+expecterror "Turma Não Cadastrada" getTurma idTurma="TCE"
 
