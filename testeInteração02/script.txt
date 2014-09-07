@@ -48,5 +48,27 @@ addTurma id="turma2" curso="TCE" professor="222" diciplina="ADS_PD" sala="Sala 7
 expect "turma1-111-ADS-ADS_PP-2012.2-Sala 3" getTurma idTurma="turma1"
 expect "turma2-222-TCE-ADS_PD-2012.2-Sala 7" getTurma idTurma="turma2"
 
+#######################
+###### ALOCAÇÃO #######
+#######################
+
+#Adicionar
+
 alocaTurmaAoHorario turma="turma1" diaSemana="segunda" horaI=6 horaF=10
-alocaTurmaAoHorario turma="turma1" diaSemana="segunda" horaI=6 horaF=10
+expect "ok Choque com - turma1 - segunda - 6 ás 10" alocaTurmaAoHorario turma="turma2" diaSemana="segunda" horaI=6 horaF=10
+
+#recuperar Turmas
+
+expect "turma2 - segunda - 6 ás 10 turma1 - segunda - 6 ás 10 " getTurmas diaSemana="segunda" horaI=6 horaF=10
+
+#getHorario
+
+expect "turma2 - segunda - 6 ás 10" getHorario idTurma="turma2"
+
+#desalocar
+
+desalocaTurmaDoHorario turma="turma2" diaSemana="segunda" horaI=6 horaF=10
+expecterror "Turma Não Alocada" getHorario idTurma="turma2"
+
+
+

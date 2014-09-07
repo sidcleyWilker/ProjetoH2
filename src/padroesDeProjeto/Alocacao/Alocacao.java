@@ -52,7 +52,7 @@ public class Alocacao {
 	
 	@Override
 	public String toString(){
-		return turma.getId()+ " - " +getDiaSemana() + " ás "
-				+ getHoraIni() + " - " +getHoraFim();
+		return turma.getId()+ " - " +getDiaSemana() + " - "
+				+ getHoraIni() + " ás " +getHoraFim();
 	}
 }
