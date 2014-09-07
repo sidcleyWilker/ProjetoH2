@@ -1,6 +1,7 @@
 package padroesDeProjeto.factory;
 
 
+import padroesDeProjeto.objetosDAO.AlocacaoDAO;
 import padroesDeProjeto.objetosDAO.CursoDAO;
 import padroesDeProjeto.objetosDAO.DiciplinaDAO;
 import padroesDeProjeto.objetosDAO.ModeloDAO;
@@ -15,26 +16,33 @@ import padroesDeProjeto.objetosDAO.TurmaDAO;
  */
 public class FactoryDAO {
 
+	private final ProfessorDAO professor = new ProfessorDAO();
+	private final CursoDAO curso = new CursoDAO();
+	private final SalaDAO sala = new SalaDAO();
+	private final DiciplinaDAO diciplina = new DiciplinaDAO();
+	private final PeriodoDAO periodo = new PeriodoDAO();
+	private final TurmaDAO turma = new TurmaDAO();
+	private final AlocacaoDAO alocacao = new AlocacaoDAO();
 	/**
 	 * cria e retorna um objeto do tipo ProfessorDAO
 	 * @return
 	 */
 	public ProfessorDAO getProfessorDao(){
-		return new ProfessorDAO();
+		return professor;
 	}
 	/**
 	 * cria e retorna um objeto do tipo CursoDao
 	 * @return
 	 */
 	public CursoDAO getCursoDao(){
-		return new CursoDAO();
+		return curso;
 	}
 	/**
 	 * cria e retorna um objeto do tipo SalaDao
 	 * @return
 	 */
 	public SalaDAO getSalaDao(){
-		return new SalaDAO();
+		return sala;
 	}
 	
 	/**
@@ -42,7 +50,7 @@ public class FactoryDAO {
 	 * @return
 	 */
 	public DiciplinaDAO getDiciplinaDao(){
-		return new DiciplinaDAO();
+		return diciplina;
 	}
 	
 	/**
@@ -50,7 +58,7 @@ public class FactoryDAO {
 	 * @return
 	 */
 	public PeriodoDAO getPeriodoDao(){
-		return new PeriodoDAO();
+		return periodo;
 	}
 	
 	/**
@@ -58,6 +66,10 @@ public class FactoryDAO {
 	 * @return
 	 */
 	public TurmaDAO getTurmaDao(){
-		return new TurmaDAO();
+		return turma;
+	}
+	
+	public AlocacaoDAO getAlocacaoDao(){
+		return alocacao;
 	}
 }

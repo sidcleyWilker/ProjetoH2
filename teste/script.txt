@@ -1,82 +1,52 @@
-#######################
-######## TURMA ########
-#######################
+#professor
 
+addProfessor id="111" nome="Mirna Maia" 
+addProfessor id="222" nome="Hugo Feitosa" 
 
-# 1. Adicionar (erro com atributo nulo ou vazio)
+expect "Mirna Maia - 111" getProfessor matricula="111"
+expect "Hugo Feitosa - 222" getProfessor matricula="222"
 
-##String id, Curso curso, Professor professor, Diciplina diciplina, Sala sala, Periodo periodo
+#curso
 
-expecterror "Atributo inválido" addTurma id=""  curso="ADS" matriculaProf="0rv101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2"    
-expecterror "Atributo inválido" addTurma id="turma2"  curso= matriculaProf="01fvv01" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
-expecterror "Atributo inválido" addTurma id="turma3"  curso="PPO" matriculaProf="" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
-expecterror "Atributo inválido" addTurma id="turma5"  curso="MACHO" matriculaProf="01gh01" codigoDisciplina= idSala="S13_C" idPeriodo="2012.2" 
-expecterror "Atributo inválido" addTurma id="turma6"  curso="XXT" matriculaProf="01hg01" codigoDisciplina="ADS_PD" idSala= idPeriodo="2012.2" 
-expecterror "Atributo inválido" addTurma id="turma9"  curso="OOP" matriculaProf="0xc101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="" 
-expecterror "Atributo inválido" addTurma id="turma8"  curso="PoS" matriculaProf="0vt101" codigoDisciplina="ADS_PD" idSala="S13_C" idPeriodo="2012.2" 
-
-
-## adicionar os atributos antes :D
 addCurso sigla="ADS" nome="Análise e Desenvolvimento de Sistemas"
+addCurso sigla="TCE" nome="Tecnólogo em Construção de Edifícios"
 
-addProfessor id="111" nome="Mirna Maia"
-addProfessor id="222" nome="Sidcley Wilker"
+expect "Análise e Desenvolvimento de Sistemas - ADS" getCurso idCurso="ADS"
+expect "Tecnólogo em Construção de Edifícios - TCE" getCurso idCurso="TCE"
 
-addSala nome="Sala 10" bloco="D"
-addSala nome="Sala 11" bloco="D"
 
-addPeriodo nomePeriodo="2012.1" sigla="ADS"
+#sala
+
+addSala nome="Sala 3" bloco="A"
+addSala nome="Sala 7" bloco="B"
+
+expect "Sala 3 - A" getSala id="Sala 3"
+expect "Sala 7 - B" getSala id="Sala 7"
+
+#periodo
+
 addPeriodo nomePeriodo="2012.2" sigla="ADS"
+addPeriodo nomePeriodo="2012.2" sigla="TCE"
 
-addDisciplinaAoPeriodo  sigla="ADS_PP" nomeDaDisciplina="Padrões de Projeto"  cargaHoraria=100 nomeCurso="ADS"  periodo="2012.1"
-addDisciplinaAoPeriodo  sigla="ADS_BD1" nomeDaDisciplina="Banco De Dados"  cargaHoraria=100 nomeCurso="ADS"  periodo="2012.1"
+expect "ADS - 2012.2" getPeriodo nomePeriodo="2012.2" sigla="ADS"
+expect "TCE - 2012.2" getPeriodo nomePeriodo="2012.2" sigla="TCE"
 
-## adicionar as turmas
-addTurma id="turma1" curso="ADS" professor="111" diciplina="ADS_PP" sala="Sala 10" periodo="2012.1"
-addTurma id="turma2" curso="ADS" professor="222" diciplina="ADS_BD1" sala="Sala 11" periodo="2012.1"
+#diciplina
+
+addDisciplinaAoPeriodo  sigla="ADS_PP" nomeDaDisciplina="Padrões de Projeto"  cargaHoraria=100 nomeCurso="ADS"  periodo="2012.2"
+addDisciplinaAoPeriodo  sigla="ADS_PD" nomeDaDisciplina="Processo de Desenvolvimento" cargaHoraria=100 nomeCurso="TCE"  periodo="2012.2"
+
+expect "Processo de Desenvolvimento" getDisciplina idCurso="TCE" sigla="ADS_PD" 
+expect "Padrões de Projeto" getDisciplina idCurso="ADS" sigla="ADS_PP" 
 
 
+#turmas
 
-# 2. Alterar
+addTurma id="turma1" curso="ADS" professor="111" diciplina="ADS_PP" sala="Sala 3" periodo="2012.2"
+addTurma id="turma2" curso="TCE" professor="222" diciplina="ADS_PD" sala="Sala 7" periodo="2012.2"
 
-expecterror "Atributo inválido" alteraTurma idTurma="" campo="nome" novoValor="BBB"
-expecterror "Atributo inválido" alteraTurma idTurma= atributo="professor" novoValor="BBB"
-expecterror "Atributo inválido" alteraTurma idTurma="BD1" atributo="" novoValor="BD2"
-expecterror "Atributo inválido" alteraTurma idTurma="BD1" atributo= novoValor="BD2"
-expecterror "Atributo inválido" alteraTurma idTurma="PP" atributo="disciplina" novoValor=""
-expecterror "Atributo inválido" alteraTurma idTurma="PP" atributo="periodo" novoValor=
+expect "turma1-111-ADS-ADS_PP-2012.2-Sala 3" getTurma idTurma="turma1"
+expect "turma2-222-TCE-ADS_PD-2012.2-Sala 7" getTurma idTurma="turma2"
 
-# (alterando e recuperando os dados simultaneamente para verificar se está ocorrendo o esperado)
-
-expect "turma1-111-ADS-ADS_PP-2012.1-Sala 10" getTurma idTurma="turma1"
-alteraTurma idTurma="turma1" atributo="professor" novoValor="222"
-expect "turma1-222-ADS-ADS_PP-2012.1-Sala 10" getTurma idTurma="turma1"
-expect "turma2-222-ADS-ADS_BD1-2012.1-Sala 11" getTurma idTurma="turma2"
-
-# 3. Remover
-
-expecterror "Atributo inválido" removerTurma idTurma=""
-expecterror "Atributo inválido" removerTurma idTurma=
-
-expecterror "Turma Não Cadastrada" removerTurma idTurma="BD1"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="BD3"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="PPP"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="PDP"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="LLP"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="123PP"
-expecterror "Turma Não Cadastrada" removerTurma idTurma="P_P"
-
-removerTurma idTurma="turma2"
-#expecterror "Turma não cadastrada" removerTurma idTurma="turma2"
-
-# 4. Recuperar Arquivos com Erro
-
-expecterror "Atributo inválido" getTurma idTurma=""
-expecterror "Atributo inválido" getTurma idTurma=
-expecterror "Turma Não Cadastrada" getTurma idTurma="BD1"
-expecterror "Turma Não Cadastrada" getTurma idTurma="BD3"
-expecterror "Turma Não Cadastrada" getTurma idTurma="P_P"
-expecterror "Turma Não Cadastrada" getTurma idTurma="ADS_PP"
-expecterror "Turma Não Cadastrada" getTurma idTurma="ADS_BD2"
-expecterror "Turma Não Cadastrada" getTurma idTurma="TCE"
-
+alocaTurmaAoHorario turma="turma1" diaSemana="segunda" horaI=6 horaF=10
+alocaTurmaAoHorario turma="turma1" diaSemana="segunda" horaI=6 horaF=10

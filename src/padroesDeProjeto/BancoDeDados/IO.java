@@ -45,7 +45,7 @@ public class IO {
             XMLEncoder en = new XMLEncoder(fos);  
             en.writeObject(object);  
             en.close();  
-            fos.close();              
+            fos.close();
         } catch (Exception e){  
             System.out.println("Erro: " + e.getMessage());    
         }  

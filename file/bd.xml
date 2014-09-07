@@ -1,5 +1,507 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.7.0_67" class="java.beans.XMLDecoder">
  <object class="padroesDeProjeto.BancoDeDados.BD">
+  <void property="cursos">
+   <void method="put">
+    <string>TCE</string>
+    <object class="padroesDeProjeto.modelo.Curso">
+     <void property="id">
+      <string>TCE</string>
+     </void>
+     <void property="nome">
+      <string>Tecnólogo em Construção de Edifícios</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ADS</string>
+    <object class="padroesDeProjeto.modelo.Curso">
+     <void property="id">
+      <string>ADS</string>
+     </void>
+     <void property="nome">
+      <string>Análise e Desenvolvimento de Sistemas</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="diciplinas">
+   <void method="put">
+    <string>ADS_PP</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>100</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Análise e Desenvolvimento de Sistemas</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>ADS_PP</string>
+     </void>
+     <void property="nome">
+      <string>Padrões de Projeto</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>ADS_PD</string>
+    <object class="padroesDeProjeto.modelo.Diciplina">
+     <void property="cargaHoraria">
+      <int>100</int>
+     </void>
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>TCE</string>
+       </void>
+       <void property="nome">
+        <string>Tecnólogo em Construção de Edifícios</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>ADS_PD</string>
+     </void>
+     <void property="nome">
+      <string>Processo de Desenvolvimento</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="horario">
+   <void method="put">
+    <string>turma1</string>
+    <object class="padroesDeProjeto.Alocacao.Alocacao">
+     <void property="diaSemana">
+      <string>segunda</string>
+     </void>
+     <void property="horaFim">
+      <int>10</int>
+     </void>
+     <void property="horaIni">
+      <int>6</int>
+     </void>
+     <void property="turma">
+      <object class="padroesDeProjeto.modelo.Turma">
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>ADS</string>
+         </void>
+         <void property="nome">
+          <string>Análise e Desenvolvimento de Sistemas</string>
+         </void>
+        </object>
+       </void>
+       <void property="diciplina">
+        <object class="padroesDeProjeto.modelo.Diciplina">
+         <void property="cargaHoraria">
+          <int>100</int>
+         </void>
+         <void property="curso">
+          <object class="padroesDeProjeto.modelo.Curso">
+           <void property="id">
+            <string>ADS</string>
+           </void>
+           <void property="nome">
+            <string>Análise e Desenvolvimento de Sistemas</string>
+           </void>
+          </object>
+         </void>
+         <void property="id">
+          <string>ADS_PP</string>
+         </void>
+         <void property="nome">
+          <string>Padrões de Projeto</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>turma1</string>
+       </void>
+       <void property="periodo">
+        <object class="padroesDeProjeto.modelo.Periodo">
+         <void property="curso">
+          <object class="padroesDeProjeto.modelo.Curso">
+           <void property="id">
+            <string>ADS</string>
+           </void>
+           <void property="nome">
+            <string>Análise e Desenvolvimento de Sistemas</string>
+           </void>
+          </object>
+         </void>
+         <void property="id">
+          <string>2012.2</string>
+         </void>
+        </object>
+       </void>
+       <void property="professor">
+        <object class="padroesDeProjeto.modelo.Professor">
+         <void property="id">
+          <string>111</string>
+         </void>
+         <void property="nome">
+          <string>Mirna Maia</string>
+         </void>
+        </object>
+       </void>
+       <void property="sala">
+        <object class="padroesDeProjeto.modelo.Sala">
+         <void property="id">
+          <string>Sala 3</string>
+         </void>
+         <void property="nome">
+          <string>A</string>
+         </void>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>turma2</string>
+    <object class="padroesDeProjeto.Alocacao.Alocacao">
+     <void property="diaSemana">
+      <string>segunda</string>
+     </void>
+     <void property="horaFim">
+      <int>10</int>
+     </void>
+     <void property="horaIni">
+      <int>7</int>
+     </void>
+     <void property="turma">
+      <object class="padroesDeProjeto.modelo.Turma">
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>TCE</string>
+         </void>
+         <void property="nome">
+          <string>Tecnólogo em Construção de Edifícios</string>
+         </void>
+        </object>
+       </void>
+       <void property="diciplina">
+        <object class="padroesDeProjeto.modelo.Diciplina">
+         <void property="cargaHoraria">
+          <int>100</int>
+         </void>
+         <void property="curso">
+          <object class="padroesDeProjeto.modelo.Curso">
+           <void property="id">
+            <string>TCE</string>
+           </void>
+           <void property="nome">
+            <string>Tecnólogo em Construção de Edifícios</string>
+           </void>
+          </object>
+         </void>
+         <void property="id">
+          <string>ADS_PD</string>
+         </void>
+         <void property="nome">
+          <string>Processo de Desenvolvimento</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>turma2</string>
+       </void>
+       <void property="periodo">
+        <object class="padroesDeProjeto.modelo.Periodo">
+         <void property="curso">
+          <object class="padroesDeProjeto.modelo.Curso">
+           <void property="id">
+            <string>TCE</string>
+           </void>
+           <void property="nome">
+            <string>Tecnólogo em Construção de Edifícios</string>
+           </void>
+          </object>
+         </void>
+         <void property="id">
+          <string>2012.2</string>
+         </void>
+        </object>
+       </void>
+       <void property="professor">
+        <object class="padroesDeProjeto.modelo.Professor">
+         <void property="id">
+          <string>222</string>
+         </void>
+         <void property="nome">
+          <string>Hugo Feitosa</string>
+         </void>
+        </object>
+       </void>
+       <void property="sala">
+        <object class="padroesDeProjeto.modelo.Sala">
+         <void property="id">
+          <string>Sala 7</string>
+         </void>
+         <void property="nome">
+          <string>B</string>
+         </void>
+        </object>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="periodos">
+   <void method="put">
+    <string>2012.2-ADS</string>
+    <object class="padroesDeProjeto.modelo.Periodo">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Análise e Desenvolvimento de Sistemas</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>2012.2</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>2012.2-TCE</string>
+    <object class="padroesDeProjeto.modelo.Periodo">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>TCE</string>
+       </void>
+       <void property="nome">
+        <string>Tecnólogo em Construção de Edifícios</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>2012.2</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="professores">
+   <void method="put">
+    <string>222</string>
+    <object class="padroesDeProjeto.modelo.Professor">
+     <void property="id">
+      <string>222</string>
+     </void>
+     <void property="nome">
+      <string>Hugo Feitosa</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>111</string>
+    <object class="padroesDeProjeto.modelo.Professor">
+     <void property="id">
+      <string>111</string>
+     </void>
+     <void property="nome">
+      <string>Mirna Maia</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="salas">
+   <void method="put">
+    <string>Sala 7</string>
+    <object class="padroesDeProjeto.modelo.Sala">
+     <void property="id">
+      <string>Sala 7</string>
+     </void>
+     <void property="nome">
+      <string>B</string>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>Sala 3</string>
+    <object class="padroesDeProjeto.modelo.Sala">
+     <void property="id">
+      <string>Sala 3</string>
+     </void>
+     <void property="nome">
+      <string>A</string>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="turmas">
+   <void method="put">
+    <string>turma1</string>
+    <object class="padroesDeProjeto.modelo.Turma">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>ADS</string>
+       </void>
+       <void property="nome">
+        <string>Análise e Desenvolvimento de Sistemas</string>
+       </void>
+      </object>
+     </void>
+     <void property="diciplina">
+      <object class="padroesDeProjeto.modelo.Diciplina">
+       <void property="cargaHoraria">
+        <int>100</int>
+       </void>
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>ADS</string>
+         </void>
+         <void property="nome">
+          <string>Análise e Desenvolvimento de Sistemas</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>ADS_PP</string>
+       </void>
+       <void property="nome">
+        <string>Padrões de Projeto</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>turma1</string>
+     </void>
+     <void property="periodo">
+      <object class="padroesDeProjeto.modelo.Periodo">
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>ADS</string>
+         </void>
+         <void property="nome">
+          <string>Análise e Desenvolvimento de Sistemas</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>2012.2</string>
+       </void>
+      </object>
+     </void>
+     <void property="professor">
+      <object class="padroesDeProjeto.modelo.Professor">
+       <void property="id">
+        <string>111</string>
+       </void>
+       <void property="nome">
+        <string>Mirna Maia</string>
+       </void>
+      </object>
+     </void>
+     <void property="sala">
+      <object class="padroesDeProjeto.modelo.Sala">
+       <void property="id">
+        <string>Sala 3</string>
+       </void>
+       <void property="nome">
+        <string>A</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+   <void method="put">
+    <string>turma2</string>
+    <object class="padroesDeProjeto.modelo.Turma">
+     <void property="curso">
+      <object class="padroesDeProjeto.modelo.Curso">
+       <void property="id">
+        <string>TCE</string>
+       </void>
+       <void property="nome">
+        <string>Tecnólogo em Construção de Edifícios</string>
+       </void>
+      </object>
+     </void>
+     <void property="diciplina">
+      <object class="padroesDeProjeto.modelo.Diciplina">
+       <void property="cargaHoraria">
+        <int>100</int>
+       </void>
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>TCE</string>
+         </void>
+         <void property="nome">
+          <string>Tecnólogo em Construção de Edifícios</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>ADS_PD</string>
+       </void>
+       <void property="nome">
+        <string>Processo de Desenvolvimento</string>
+       </void>
+      </object>
+     </void>
+     <void property="id">
+      <string>turma2</string>
+     </void>
+     <void property="periodo">
+      <object class="padroesDeProjeto.modelo.Periodo">
+       <void property="curso">
+        <object class="padroesDeProjeto.modelo.Curso">
+         <void property="id">
+          <string>TCE</string>
+         </void>
+         <void property="nome">
+          <string>Tecnólogo em Construção de Edifícios</string>
+         </void>
+        </object>
+       </void>
+       <void property="id">
+        <string>2012.2</string>
+       </void>
+      </object>
+     </void>
+     <void property="professor">
+      <object class="padroesDeProjeto.modelo.Professor">
+       <void property="id">
+        <string>222</string>
+       </void>
+       <void property="nome">
+        <string>Hugo Feitosa</string>
+       </void>
+      </object>
+     </void>
+     <void property="sala">
+      <object class="padroesDeProjeto.modelo.Sala">
+       <void property="id">
+        <string>Sala 7</string>
+       </void>
+       <void property="nome">
+        <string>B</string>
+       </void>
+      </object>
+     </void>
+    </object>
+   </void>
+  </void>
  </object>
 </java>

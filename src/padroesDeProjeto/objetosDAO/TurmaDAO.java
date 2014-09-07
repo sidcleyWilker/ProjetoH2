@@ -7,6 +7,9 @@ import padroesDeProjeto.util.Util;
 
 public class TurmaDAO {
 
+	public TurmaDAO() {
+	}
+
 	/**
 	 * carega adiciona e salva uma turma no sistema
 	 * @param turma - objeto do tipo turma

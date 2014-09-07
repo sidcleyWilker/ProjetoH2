@@ -1,6 +1,7 @@
 package padroesDeProjeto.Fachada;
 
 
+import padroesDeProjeto.Alocacao.GerenciaAlocacao;
 import padroesDeProjeto.Exception.H2Exception;
 import padroesDeProjeto.Proxy.ProxyCurso;
 import padroesDeProjeto.Proxy.ProxyDiciplina;
@@ -17,6 +18,7 @@ public class FachadaCliente implements FachadaIF{
 	private ProxyCurso curso = new ProxyCurso();
 	private ProxyPeriodo periodo = new ProxyPeriodo();
 	private ProxyTurma turma = new ProxyTurma();
+	private GerenciaAlocacao alocacao = new GerenciaAlocacao();
 	
 	@Override
 	public void addProfessor(String idProfessor, String nome)
@@ -170,28 +172,28 @@ public class FachadaCliente implements FachadaIF{
 	@Override
 	public String alocaTurmaAoHorario(String idTurma, String diaDaSemana,
 			int horaInicio, int horafim) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return alocacao.alocaTurmaAoHorario(idTurma, diaDaSemana, horaInicio, horafim);
 	}
 
 	@Override
 	public String desalocaTurmaDoHorario(String idTurma, String diaDaSemana,
 			int horaInicio, int horaFim) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return alocacao.desalocaTurmaDoHorario(idTurma, diaDaSemana, horaInicio, horaFim);
 	}
 
 	@Override
 	public String getHorario(String idTurma) throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return alocacao.getHorario(idTurma);
 	}
 
 	@Override
 	public String getTurmas(String diaDaSemana, int horaInicio, int horaFim)
 			throws H2Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return alocacao.getTurmas(diaDaSemana, horaInicio, horaFim);
 	}
 
 }

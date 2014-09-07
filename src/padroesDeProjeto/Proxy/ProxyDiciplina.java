@@ -143,7 +143,7 @@ public class ProxyDiciplina {
 	public String toStringDiciplina(String idCurso, String idDisciplina) throws H2Exception{
 		Util.verificaAtributo(idCurso,idDisciplina);
 		if(verificador.comtemCurso(idCurso) && verificador.comtemDiciplina(idDisciplina)){
-			if (Util.bd.getDiciplinas().get(idDisciplina).getCurso().getId().equals(Util.bd.getCursos().get(idCurso).getId())) {
+			if (Util.factoryDao.getDiciplinaDao().getDiciplinas().get(idDisciplina).getCurso().getId().equals(Util.factoryDao.getCursoDao().getCuros().get(idCurso).getId())) {
 				return Util.fachadaDao.getDisciplina(idDisciplina);
 			}else{
 				throw new ExceptionParametroInvalido();

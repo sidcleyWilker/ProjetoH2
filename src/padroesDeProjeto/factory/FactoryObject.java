@@ -1,5 +1,6 @@
 package padroesDeProjeto.factory;
 
+import padroesDeProjeto.Alocacao.Alocacao;
 import padroesDeProjeto.modelo.Curso;
 import padroesDeProjeto.modelo.Diciplina;
 import padroesDeProjeto.modelo.Modelo;
@@ -87,6 +88,18 @@ public class FactoryObject {
 				Util.factoryDao.getDiciplinaDao().getDiciplinas().get(idDisciplina),
 				Util.factoryDao.getSalaDao().getSalas().get(idSala),
 				Util.factoryDao.getPeriodoDao().getPeriodos().get(idPeriodo+"-"+idCurso));
+	}
+	
+	/**
+	 * cria e retorna um objeto do tipo locação
+	 * @param idTurma
+	 * @param diaDaSemana
+	 * @param horaInicio
+	 * @param horafim
+	 * @return
+	 */
+	public Alocacao criarAlocacao(String idTurma,String diaDaSemana, int horaInicio, int horafim){
+		return new Alocacao(Util.factoryDao.getTurmaDao().getTurmas().get(idTurma), diaDaSemana,horaInicio, horafim);
 	}
 	
 }

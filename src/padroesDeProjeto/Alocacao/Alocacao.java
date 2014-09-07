@@ -21,6 +21,9 @@ public class Alocacao {
 		this.horaFim = horaFim;
 	}
 	
+	public Alocacao(){
+		
+	}
 	public Turma getTurma() {
 		return turma;
 	}
