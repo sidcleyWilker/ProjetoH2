@@ -3,6 +3,7 @@ package padroesDeProjeto.Fachada;
 
 import padroesDeProjeto.Alocacao.GerenciaAlocacao;
 import padroesDeProjeto.Exception.H2Exception;
+import padroesDeProjeto.GerarPDF.GerarPDF;
 import padroesDeProjeto.Proxy.ProxyCurso;
 import padroesDeProjeto.Proxy.ProxyDiciplina;
 import padroesDeProjeto.Proxy.ProxyPeriodo;
@@ -19,6 +20,7 @@ public class FachadaCliente implements FachadaIF{
 	private ProxyPeriodo periodo = new ProxyPeriodo();
 	private ProxyTurma turma = new ProxyTurma();
 	private GerenciaAlocacao alocacao = new GerenciaAlocacao();
+	private GerarPDF gerarPDF = new GerarPDF();
 	
 	@Override
 	public void addProfessor(String idProfessor, String nome)
@@ -111,10 +113,11 @@ public class FachadaCliente implements FachadaIF{
 	@Override
 	public void addTurma(String idTurma, String idCurso,
 			String identificadorProfessor, String identificadorDisciplina,
-			String identificadorSala, String identificadorPeriodo)
+			String identificadorSala, String identificadorPeriodo,int periodoAtual)
 			throws H2Exception {
 	
-		turma.addTurma(idTurma, idCurso, identificadorProfessor, identificadorDisciplina, identificadorSala, identificadorPeriodo);
+		turma.addTurma(idTurma, idCurso, identificadorProfessor,identificadorDisciplina,
+				identificadorSala, identificadorPeriodo,periodoAtual);
 	}
 
 	@Override
@@ -194,6 +197,12 @@ public class FachadaCliente implements FachadaIF{
 			throws H2Exception {
 		
 		return alocacao.getTurmas(diaDaSemana, horaInicio, horaFim);
+	}
+
+	@Override
+	public String salvaHorario(String nomeDoArquivo) {
+		
+		return null;
 	}
 
 }

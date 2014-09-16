@@ -40,11 +40,14 @@ public class ProxyTurma {
 	 * @throws H2Exception
 	 */
 	public void addTurma(String idTurma, String idCurso,String idProfessor, String idDisciplina,
-			String idSala, String idPeriodo)throws H2Exception{
+			String idSala, String idPeriodo,int periodoAtual)throws H2Exception{
+		
 		Util.verificaAtributo(idTurma,idCurso,idProfessor,idDisciplina,idSala,idPeriodo);
+		Util.verificaAtributoCargaHoraria(periodoAtual);
+		
 		if(contemObjetosTurma(idCurso, idProfessor, idDisciplina, idSala, idPeriodo)){
 			if(!verificador.comtemTurma(idTurma)){
-				commandAddTurma.setTurma(Util.factoryObject.criarTurma(idTurma, idCurso, idProfessor, idDisciplina, idSala, idPeriodo));
+				commandAddTurma.setTurma(Util.factoryObject.criarTurma(idTurma, idCurso, idProfessor, idDisciplina, idSala, idPeriodo,periodoAtual));
 				controler.setCommand(commandAddTurma);
 				controler.executarCommando();
 			}else{

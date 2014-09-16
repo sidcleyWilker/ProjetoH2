@@ -250,13 +250,15 @@ public interface FachadaIF {
 	 *            O identificador da sala
 	 * @param identificadorPeriodo
 	 *            O identificador do período da turma
+	 * @param periodoAtual
+	 * 			  O perido que a turma esta cursando
 	 * @throws H2Exception
 	 *             Caso algum parâmetro seja nulo ou vazio deve ser lançada a
 	 *             exceção H2Exception com a mensagem "Atributo inválido"
 	 */
 	public void addTurma(String idTurma, String idCurso,
 			String identificadorProfessor, String identificadorDisciplina,
-			String identificadorSala, String identificadorPeriodo)
+			String identificadorSala, String identificadorPeriodo,int periodoAtual)
 			throws H2Exception;
 
 	/**
@@ -478,4 +480,19 @@ public interface FachadaIF {
 	 */
 	public String getTurmas(String diaDaSemana, int horaInicio, int horaFim)
 			throws H2Exception;
+	
+	/**
+	 * Método que salva o horario atual em um arquivo cujo nome foi passado como
+	 * parametro. O formato do arquivo é decisão do projetista/desenvolvedor.
+	 * Caso já exista um arquivo com mesmo nome, deve ser sobrescrito pelo novo.
+	 * 
+	 * @param nomeDoArquivo
+	 *            O nome do arquivo onde o horário deve ser salvo.
+	 * @return "O arquivo <nomeDoArquivo> foi criado com sucesso." Caso o
+	 *         arquivo tenha sido criado corretamente com o horário. Caso
+	 *         contrário, deve ser impressa uma mensagem de erro explicando o
+	 *         motivo (não há padrão para as mensagens de erro).
+	 * 
+	 */
+	public String salvaHorario(String nomeDoArquivo);
 }

@@ -36,7 +36,7 @@ public class TurmaDAO {
 	 * @param campo - campo que vai ser alterado
 	 * @param novovalor - um novo objeto que vai subistituir
 	 */
-	public void alterar(String id,String campo,Object novovalor){
+	public void alterar(String id,String campo,String novovalor){
 		Util.bd.load();
 		if(campo.equals("professor")){
 			Util.bd.getTurmas().get(id).setProfessor(Util.bd.getProfessores().get(novovalor));
@@ -46,7 +46,9 @@ public class TurmaDAO {
 			Util.bd.getTurmas().get(id).setSala(Util.bd.getSalas().get(novovalor));
 		}else if(campo.equals("periodo")){
 			Util.bd.getTurmas().get(id).setPeriodo(Util.bd.getPeriodos().get(novovalor));
-		}
+		}else if(campo.equals("periodoAtual")){
+			Util.bd.getTurmas().get(id).setPeriodoAtual(Integer.parseInt(novovalor));
+			}
 		Util.bd.salvar();
 	}
 	

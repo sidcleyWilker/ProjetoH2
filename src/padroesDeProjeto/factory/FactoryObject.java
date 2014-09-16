@@ -82,12 +82,12 @@ public class FactoryObject {
 	 * @return
 	 */
 	public Turma criarTurma(String idTurma, String idCurso,String idProfessor, String idDisciplina,
-			String idSala, String idPeriodo){
+			String idSala, String idPeriodo,int periodoAtual){
 		return new Turma(idTurma, Util.factoryDao.getCursoDao().getCuros().get(idCurso),
 				Util.factoryDao.getProfessorDao().getProfessores().get(idProfessor),
 				Util.factoryDao.getDiciplinaDao().getDiciplinas().get(idDisciplina),
 				Util.factoryDao.getSalaDao().getSalas().get(idSala),
-				Util.factoryDao.getPeriodoDao().getPeriodos().get(idPeriodo+"-"+idCurso));
+				Util.factoryDao.getPeriodoDao().getPeriodos().get(idPeriodo+"-"+idCurso),periodoAtual);
 	}
 	
 	/**
